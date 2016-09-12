@@ -1,0 +1,132 @@
+<div class="header">
+      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+             <button class="navbar-toggle collapsed" ng-click="toggleRight()"
+            ng-hide="isOpenRight()" class="bigicon glyphicon glyphicon-option-vertical">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <ng-md-icon icon="search" style="fill: #0097a7"></ng-md-icon> 
+            </button>
+           
+            <a class="navbar-brand" href="#/">
+              <img ng-src="./images/logo.png" alt="Slango"/>
+            </a>
+          </div>
+          
+
+
+          <div class="collapse navbar-collapse" id="js-navbar-collapse">
+
+            <!--<ul class="nav navbar-nav">
+              <li class="active"><a ui-sref="/">Home</a></li>
+             
+            </ul>-->
+         <div class="search">
+         <form name="searchForm">
+          <input type="text" class="form-control input-sm" name="searchstring" ng-model="searchstring" minlength="3" maxlength="64" minlength="3" placeholder="Search" required="" value="">
+           <div ng-show="searchForm.$submitted || searchForm.searchstring.$touched">
+            <span class="error" ng-show="searchForm.searchstring.$error.required">
+             Required!</span>
+          </div>
+          <span class="error">{{error}}</span>
+           <md-button type="submit" class="btn md-raised md-primary" ng-click="searchSlango(searchstring)">Search</md-button>
+          </form>
+          </div>
+            <ul class="user-si-a nav navbar-nav navbar-right">
+
+            <li ng-show="slangoUser" class="upload-btn"><a class="btn btn-default" ui-sref="upload">Upload</a></li>
+
+            <li class="fix-top" ng-hide="slangoUser"><a ui-sref="login">Log in</a></li>
+            <li class="fix-top" ng-hide="slangoUser"><a ui-sref="signup">Sign up</a></li>
+            
+            <li class="user-si" ng-show="slangoUser">
+            <ng-md-icon icon="notifications_none" style="fill: red" size="30"></ng-md-icon> 
+            <a ui-sref="user({uid: slangoUser.uid, user: slangoUser.displayName})">
+            <img  class="user-avatar md-raised md-primary" ng-src="{{userUrlImg}}"" alt="{{slangoUser.displayName}}">
+            </a>
+            <ng-md-icon ng-click="toggleRight()"
+            ng-hide="isOpenRight()"  icon="toc" style="fill:#A6A6A6" size="40"></ng-md-icon> 
+          </li>
+          </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<section layout="row" flex class="menu-side" ng-controller="HeaderCtrl">    
+      <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="right">
+
+      <md-toolbar class="md-theme-light">
+
+        <h1 class="md-toolbar-tools  pull-right" >   <ng-md-icon  class="icon-closes" ng-click="close()" icon="backspace"></ng-md-icon><span flex> </span> <ng-md-icon icon="perm_identity"></ng-md-icon> Account </h1> 
+      </md-toolbar>
+      <md-content layout-padding>
+      <div ng-show="slangoUser">
+       <md-list flex>
+        <md-list-item class="md-3-line">
+          <a ui-sref="user({uid: slangoUser.uid, user: slangoUser.displayName})">
+            <img  class="user-avatar md-raised md-primary" ng-src="{{userUrlImg}}"" alt="{{slangoUser.displayName}}">
+            </a>
+          <div class="md-list-item-text" layout="column">
+            <h3 class="capitalize">{{slangoUser.displayName}}</h3>
+            <h4>Your Profile</h4>
+            <p><a ui-sref="user({uid: slangoUser.uid, user: slangoUser.displayName})">Go To Account</a></p>
+          </div>
+        </md-list-item>
+        <md-divider ></md-divider>
+        <md-subheader class="md-no-sticky">Account Updates:</md-subheader>
+         <md-list-item class="md-3-line">
+
+          <div class="md-list-item-text" layout="column">
+             <ng-md-icon icon="notifications_none" style="fill: red" size="30"></ng-md-icon> 
+          </div>
+        </md-list-item>
+        
+        <md-list-item  class="md-3-line text-center">
+         <div class="md-list-item-text" layout="column">
+          <a class="btn btn-success" ui-sref="upload">Upload A Video</a>
+          </div>
+        </md-list-item>
+        <md-divider ></md-divider>
+        <md-list-item  class="md-3-line">
+          <div class="md-list-item-text text-center" layout="column">
+            <md-button class="md-raised md-primary" ng-click="signOutUser()"><ng-md-icon icon="logout"></ng-md-icon> Log out</md-button>
+          </div>
+        </md-list-item>
+        </div>
+        <div ng-hide="slangoUser">
+        <md-list-item class="md-3-line">
+          <div class="md-list-item-text" layout="column">
+            <h3><a ui-sref="login">Login</a></h3>
+          </div>
+          <div class="md-list-item-text" layout="column">
+            <h3><a ui-sref="signup">Sign Up</a></h3>
+          </div>
+        </md-list-item>
+        </div>
+        <md-divider ></md-divider>
+        <md-subheader class="md-no-sticky">Site Menu:</md-subheader>
+         <md-list-item class="md-3-line">
+          <div class="md-list-item-text" layout="column">
+            <h3><a ui-sref="home">Home</a></h3>
+          </div>
+          <div class="md-list-item-text" layout="column">
+            <h3><a ui-sref="contact">Contact Us</a></h3>
+          </div>
+          <div class="md-list-item-text" layout="column">
+            <h3><a ui-sref="about">About Us</a></h3>
+          </div>
+        </md-list-item>
+
+        </md-list>
+      </md-content>
+    </md-sidenav>
+     </section>

@@ -10,6 +10,9 @@
 module.exports = function (grunt) {
 
   // Time how long tasks take. Can help when optimizing build times
+  var packageJson = require('./package.json');
+  var path = require('path');
+  var swPrecache = require('sw-precache/lib/sw-precache.js');
   require('time-grunt')(grunt);
 
   // Automatically load required Grunt tasks
@@ -30,6 +33,13 @@ module.exports = function (grunt) {
 
     // Project settings
     yeoman: appConfig,
+    //offline first 
+    swPrecache: {
+      dev: {
+        handleFetch: false,
+        rootDir: '<%= yeoman.dist %>'
+      }
+    },
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
@@ -38,7 +48,7 @@ module.exports = function (grunt) {
         tasks: ['wiredep']
       },
       js: {
-        files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
+        files: ['app/**/*.js'],
         tasks: ['newer:jshint:all', 'newer:jscs:all'],
         options: {
           livereload: '<%= connect.options.livereload %>'
@@ -60,7 +70,7 @@ module.exports = function (grunt) {
           livereload: '<%= connect.options.livereload %>'
         },
         files: [
-          '<%= yeoman.app %>/{,*/}*.html',
+          ['app/**/*.html'],
           '.tmp/styles/{,*/}*.css',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
@@ -70,7 +80,7 @@ module.exports = function (grunt) {
     // The actual grunt server settings
     connect: {
       options: {
-        port: 9000,
+        port: 9007,
         // Change this to '0.0.0.0' to access the server from outside.
         hostname: 'localhost',
         livereload: 35729
@@ -127,7 +137,7 @@ module.exports = function (grunt) {
       all: {
         src: [
           'Gruntfile.js',
-          '<%= yeoman.app %>/scripts/{,*/}*.js'
+          '<%= yeoman.app %>/**/*.js'
         ]
       },
       test: {
@@ -147,7 +157,7 @@ module.exports = function (grunt) {
       all: {
         src: [
           'Gruntfile.js',
-          '<%= yeoman.app %>/scripts/{,*/}*.js'
+          '<%= yeoman.app %>/**/*.js'
         ]
       },
       test: {
@@ -343,7 +353,10 @@ module.exports = function (grunt) {
           usemin: 'scripts/scripts.js'
         },
         cwd: '<%= yeoman.app %>',
-        src: 'views/{,*/}*.html',
+        src: [
+        '**/*.html',
+        '!**.html'
+        ],
         dest: '.tmp/templateCache.js'
       }
     },
@@ -425,7 +438,37 @@ module.exports = function (grunt) {
       }
     }
   });
+  
+  //offline first
+  function writeServiceWorkerFile(rootDir, handleFetch, callback) {
+    var config = {
+      cacheId: packageJson.name,
+      // If handleFetch is false (i.e. because this is called from swPrecache:dev), then
+      // the service worker will precache resources but won't actually serve them.
+      // This allows you to test precaching behavior without worry about the cache preventing your
+      // local changes from being picked up during the development cycle.
+      handleFetch: handleFetch,
+      staticFileGlobs: [
+        rootDir + '/**/*.{html,css,js,jpg,png,json,mp4}'
+      ],
+      stripPrefix: rootDir
+    };
 
+    swPrecache.write(path.join(rootDir, 'service-worker.js'), config, callback);
+  }
+
+  grunt.registerMultiTask('swPrecache', function() {
+    var done = this.async();
+    var rootDir = this.data.rootDir;
+    var handleFetch = this.data.handleFetch;
+
+    writeServiceWorkerFile(rootDir, handleFetch, function(error) {
+      if (error) {
+        grunt.fail.warn(error);
+      }
+      done();
+    });
+  });
 
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
     if (target === 'dist') {
@@ -471,7 +514,8 @@ module.exports = function (grunt) {
     'uglify',
     'filerev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+    'swPrecache'
   ]);
 
   grunt.registerTask('default', [

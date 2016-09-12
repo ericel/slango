@@ -1,3 +1,6 @@
+* {
+    margin: 0;
+}
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -5,22 +8,27 @@
   padding: 0.2em 0;
 }
 
+html {
+  position: relative;
+  min-height: 100%;
+  width:100%;
+}
+
 body {
-  padding: 0;
+  margin:0;
+  margin-bottom: 60px;
+  padding:0;
+  position: relative;
+  width:100%;
+  margin:0;
 }
-
+.error {color:#F90808;}
 /* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
 /* Custom page header */
 .header {
-  border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 10px;
+  border-bottom: 1px solid #ccd;
+  margin-bottom: 50px;
+
 }
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
@@ -30,12 +38,28 @@ body {
   padding-bottom: 19px;
 }
 
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
+.navbar {
+  background: #fcfcfc;
+  box-shadow: 0 0 1px rgba(0,0,0,.14),0 1px 1px rgba(0,0,0,.28);
+
 }
+.navbar-brand img{
+  padding-top: none;
+  height: 20px;
+  }
+.navbar {
+
+    min-height: 40px;
+    margin-bottom: 0px; 
+    border: 1px solid transparent;
+}
+.nav > li > a {
+  display: inline-block;
+  padding: 0;
+  margin:0 10px;
+}
+
+
 
 .container-narrow > hr {
   margin: 30px 0;
@@ -58,26 +82,729 @@ body {
 .marketing p + h4 {
   margin-top: 28px;
 }
-
+a {
+  color:#0097a7;
+}
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
+ 
+
+
+}
+
+/* MENU CSS */
+.navbar-au, .navbar-au-m{
+  list-style: none;
+  font-size: 14px;
+
+}
+.navbar-au-m li{
+  margin-right: 15px;
+  margin-top: 15px;
+}
+
+.navbar-au-m li, .navbar-au li{
+ display: inline;
+} 
+.navbar-au li:first-child{
+   margin-right: 5px;
+   padding-right: 5px;
+   border-right: 1px solid #ffffff;
+}
+.user-si {
+  margin-left: 20px;
+}
+img.user-avatar{
+  height: 30px;
+  width:30px;
+  margin-top: 10px;
+  border-radius: 100%;
+  box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+}
+.md-sidenav { 
+  z-index: 9999;
+  height: auto;
   }
 
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
+.md-toolbar-tools {
+  position: absolute;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.md-button.md-blue.md-raised {
+    color: rgba(255,255,255,0.87);
+    
+     background: #155697;
+}
+.md-button.md-red.md-raised {
+    color: rgba(255,255,255,0.87);
+     background: #E8216A;
+}
+.md-button.md-skyblue.md-raised {
+    color: rgba(255,255,255,0.87);
+     background: #61B9D6;
+}
+.md-button.md-skyblue.md-raised:not([disabled]):hover, .md-button.md-red.md-raised:not([disabled]):hover, .md-button.md-blue.md-raised:not([disabled]):hover {
+   background-color: rgb(63,81,181);
+}
+.navbar {
+
+    min-height: 40px;
+    margin-bottom: 0px; 
+    border: 1px solid transparent;
+}
+
+md-sidenav {
+  z-index: 9999;
+}
+md-sidenav md-toolbar {
+  height: 50px !important;
+}
+.icon-closes {
+  position: absolute;
+  left: 10px;
+  top:18px;
+}
+.loader{
+  text-align: center;
+  font-size: 2em;
+  width: 100%;
+}
+
+#loading-bar .bar {
+
+  background: #5cb85c;
+  
+}
+#loading-bar-spinner .spinner-icon {
+  border-top-color:  #5cb85c;
+  border-left-color: #5cb85c;
+}
+/* Search Box */
+.search {
+    padding:2px 0;
+    width: 60%;
+    height: 30px;
+    position: relative;
+    left: 10px;
+    float: left;
+    line-height: 22px;
+    margin-top: 10px;
+}
+.search input {
+    position: absolute;
+    width: 100%;
+    float: left;
+    -webkit-transition: all 0.7s ease-in-out;
+    -moz-transition: all 0.7s ease-in-out;
+    -o-transition: all 0.7s ease-in-out;
+    transition: all 0.7s ease-in-out;
+    height: 30px;
+    line-height: 18px;
+    padding: 0 5px 0 5px;
+    border-radius:2px;
+}
+
+
+.search .btn {
+    height: 30px;
+    position: absolute;
+    right: 0;
+    top: 2px;
+    border-radius:1px;
+}
+.search .md-button {
+  margin: 0 !important;
+  min-height: 30px !important;
+  line-height: 0;
+}
+.navbar-brand img{
+  padding-top: none;
   }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
+  @media screen and (max-width: 768px){
+  .user-si-a {display: none !important;}
+  .search{
+    width: 90%;
+    margin-bottom: 20px;
   }
 }
+.fix-top {
+  padding:12px 0;
+}
+/* END MENU CSS */
+
+/* HOME CSS */
+.main {
+ min-height: 100%;
+}
+
+/* END HOME CSS */
+/* FOOTER CSS */
+.footer {
+  bottom: 0;
+  width: 100%;
+
+  background-color: #f5f5f5;
+  margin-top: 30px;
+}
+ .footer p {
+  display: block;
+  margin-top: 10px;
+ }
+
+.nt-status {
+  font-size: 2.5em;
+  color: #ccd;
+  font-style: italic;
+}
+/* END FOOTER CSS */
+/* Overlay Css */
+.main-bg {
+  background: url('/images/design/main-home.jpg');
+  min-height: 100%;
+  min-width: 100%;
+  background-size: cover;
+  position: relative;
+}
+.main-bg-overlay {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.main-bg-overlay-content {
+    position: relative;
+    top: 10%;
+    width: 100%;
+    margin-top: 30px;
+    color: #ffffff;
+    padding-bottom: 60px;
+}
+@media screen and (min-width: 768px){
+.main-bg-overlay-content md-card{
+ margin-left: auto;
+ margin-right: auto;
+ width: 400px;
+}
+
+.main-bg-overlay-content h1 {
+  text-align: center;
+}
+.main-bg-overlay-content .text-center {
+  padding-bottom: 10px;
+}
+
+.main-f {
+  min-height: 768px;
+}
+}
+/* End Overlay Css */
+/* Form CSS */
+@media and screen (min-width: 768px){
+md-card {
+  width: 100%;
+  margin: 8px 0 !important;
+
+}
+}
+.main-bg md-card {
+ border: 2px solid #0097a7;
+ border-radius: 5px;
+}
+.listing-cr input {
+  display: block;
+  margin: 1em auto;
+  padding: 0.5em 0.25em;
+  border-radius: 0.2em;
+  font-size: 1.5em;
+}
+.listing-cr md-select {
+  display: block;
+  margin: 1em auto;
+  padding: 0.5em 0.25em;
+  border-radius: 0.2em;
+  font-size: 1.5em;
+  text-align: center;
+}
+.listing-cr textarea {
+  display: block;
+  margin: 1em auto;
+  padding: 0em 0.25em;
+  border-radius: 0.2em;
+  font-size: 1.5em;
+}
+/* END Form Css */
+/* Account Css */
+.col-user {
+  max-height: 400px;
+  background: url('');
+  clear: both;
+  z-index: 99;
+  position: relative;
+}
+.col-user section.col-user-bg{
+  background-size: 12px;
+}
+.col-user section.color {
+  background-color: rgb(0,137,123);
+  color: #fff;
+}
+.col-user section.col-user-bg {
+  background-image: url(/images/design/gradient.png);
+}
+.col-user section.col-user-bg {
+  background-repeat: repeat-x;
+  background-position: bottom;
+  background-size: 20px;
+}
+
+.col-user section {
+  
+}
+*, .col-user section {
+  box-sizing: border-box;
+}
+img.user-avatar-user{
+  height: 150px;
+  width:150px;
+  margin-top: 10px;
+  border-radius: 100%;
+  box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+  margin-bottom: -20px;
+  position: relative;
+  z-index: 999;
+}
+.capitalize {
+    text-transform: capitalize;
+}
+.userpic {
+  height: 150px;
+  width:150px;
+  margin-top: 10px;
+  border-radius: 100%;
+}
+.userpic::hover{
+  background: #000000;
+}
+.mak-pic input {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/*
+  By Osvaldas Valutis, www.osvaldas.info
+  Available for use under the MIT License
+*/
+.hidden {
+  position: absolute;
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+
+}
+
+.inputfile + label {
+    max-width: 80%;
+    font-size: 1.25rem;
+    /* 20px */
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0.625rem 1.25rem;
+    /* 10px 20px */
+}
+
+.no-js .inputfile + label {
+    display: none;
+}
+
+.inputfile:focus + label,
+.inputfile.has-focus + label {
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+}
+
+.inputfile + label * {
+    /* pointer-events: none; */
+    /* in case of FastClick lib use */
+}
+
+.inputfile + label svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    fill: currentColor;
+    margin-top: -0.25em;
+    /* 4px */
+    margin-right: 0.25em;
+    /* 4px */
+}
+
+
+/* style 1 */
+
+.inputfile-1 + label {
+    color: #f1e5e6;
+    background-color: #d3394c;
+}
+
+.inputfile-1:focus + label,
+.inputfile-1.has-focus + label,
+.inputfile-1 + label:hover {
+    background-color: #722040;
+}
+
+
+/* style 2 */
+
+.inputfile-2 + label {
+    color: #d3394c;
+    border: 2px solid currentColor;
+}
+
+.inputfile-2:focus + label,
+.inputfile-2.has-focus + label,
+.inputfile-2 + label:hover {
+    color: #722040;
+}
+
+
+/* style 3 */
+
+.inputfile-3 + label {
+    color: #d3394c;
+}
+
+.inputfile-3:focus + label,
+.inputfile-3.has-focus + label,
+.inputfile-3 + label:hover {
+    color: #722040;
+}
+
+
+/* style 4 */
+
+.inputfile-4 + label {
+    color: #d3394c;
+}
+
+.inputfile-4:focus + label,
+.inputfile-4.has-focus + label,
+.inputfile-4 + label:hover {
+    color: #722040;
+}
+
+.inputfile-4 + label figure {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #d3394c;
+    display: block;
+    padding: 20px;
+    margin: 0 auto 10px;
+}
+
+.inputfile-4:focus + label figure,
+.inputfile-4.has-focus + label figure,
+.inputfile-4 + label:hover figure {
+    background-color: #722040;
+}
+
+.inputfile-4 + label svg {
+    width: 100%;
+    height: 100%;
+    fill: #f1e5e6;
+}
+
+
+/* style 5 */
+
+.inputfile-5 + label {
+    color: #d3394c;
+}
+
+.inputfile-5:focus + label,
+.inputfile-5.has-focus + label,
+.inputfile-5 + label:hover {
+    color: #722040;
+}
+
+.inputfile-5 + label figure {
+    width: 100px;
+    height: 135px;
+    background-color: #d3394c;
+    display: block;
+    position: relative;
+    padding: 30px;
+    margin: 0 auto 10px;
+}
+
+.inputfile-5:focus + label figure,
+.inputfile-5.has-focus + label figure,
+.inputfile-5 + label:hover figure {
+    background-color: #722040;
+}
+
+.inputfile-5 + label figure::before,
+.inputfile-5 + label figure::after {
+    width: 0;
+    height: 0;
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.inputfile-5 + label figure::before {
+    border-top: 20px solid #dfc8ca;
+    border-left: 20px solid transparent;
+}
+
+.inputfile-5 + label figure::after {
+    border-bottom: 20px solid #722040;
+    border-right: 20px solid transparent;
+}
+
+.inputfile-5:focus + label figure::after,
+.inputfile-5.has-focus + label figure::after,
+.inputfile-5 + label:hover figure::after {
+    border-bottom-color: #d3394c;
+}
+
+.inputfile-5 + label svg {
+    width: 100%;
+    height: 100%;
+    fill: #f1e5e6;
+}
+
+
+/* style 6 */
+
+.inputfile-6 + label {
+    color: #d3394c;
+}
+
+.inputfile-6 + label {
+    border: 1px solid #d3394c;
+    background-color: #f1e5e6;
+    padding: 0;
+}
+
+.inputfile-6:focus + label,
+.inputfile-6.has-focus + label,
+.inputfile-6 + label:hover {
+    border-color: #722040;
+}
+
+.inputfile-6 + label span,
+.inputfile-6 + label strong {
+    padding: 0.625rem 1.25rem;
+    /* 10px 20px */
+}
+
+.inputfile-6 + label span {
+    width: 200px;
+    min-height: 2em;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: top;
+}
+
+.inputfile-6 + label strong {
+    height: 100%;
+    color: #f1e5e6;
+    background-color: #d3394c;
+    display: inline-block;
+}
+
+.inputfile-6:focus + label strong,
+.inputfile-6.has-focus + label strong,
+.inputfile-6 + label:hover strong {
+    background-color: #722040;
+}
+
+@media screen and (max-width: 50em) {
+  .inputfile-6 + label strong {
+    display: block;
+  }
+}
+.hidebtn {
+  
+  position: relative;
+  right:0;
+}
+/*End Account Css */
+/* UPLOAD CSS */
+.navbar-au-m a {
+ float: left;
+ padding-top: 10px;
+}
+li.upload-btn {
+  padding-top: 10px;
+  float: left !important;
+}
+li.upload-btn .btn{
+  padding: 5px;
+}
+canvas {
+  border: 3px solid #0097a7;
+  border-radius: 4px;
+  width: 100%;
+}
+.button {
+    -moz-appearance: button;
+    /* Firefox */
+    -webkit-appearance: button;
+    /* Safari and Chrome */
+    padding: 10px;
+    margin: 10px;
+    width: 70px;
+}
+.box {
+    background: #F8F8F8;
+    border: 5px dashed #DDD;
+    text-align: center;
+    padding-top: 25px;
+    margin: 10px;
+}
+
+.canvas__container {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+.canvas__canvas {
+  height: 100%;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+.canvas__mirror {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%; 
+}
+.progress-dis .md-container, .progress-dis .md-bar{
+  height:20px !important;
+}
+
+/* END UPLOAD CSS */
+/* ADS CSS */
+.ads-box-s {
+  width: 100%;
+  height: 300px;
+  margin: 10px 0;
+  background: #B8F1E0;
+  text-align: center;
+  padding-top: 30%;
+}
+/* END ADS Css */
+/* Video CSS */
+.video {
+  position: relative;
+  text-align: center;
+  height: 180px;
+  overflow: hidden;
+}
+@media screen and (max-width: 868px){
+.video {
+height: auto;
+box-shadow: 0 0 1px rgba(0,0,0,.14),0 1px 1px rgba(0,0,0,.28);
+}
+}
+.video img{
+  width:100%;
+}
+.video .over-vid-lay{
+  top: -50px;
+  position: relative;
+  background: rgba(0,0,0,.8);
+  height: 50px;
+  color: #ffffff;
+  font-size: 1.2em;
+}
+.over-vid-lay a {
+  color: #ccd;
+}
+.video-player {
+  background: #000000;
+  padding-top: 5px;
+}
+@media screen and (max-width: 768px){
+.video-player {
+  padding-top: 10px;
+}
+}
+.sh-r {
+  color:#CBCBCB;
+}
+.vidtitle {
+ font-size: 1.8em;
+ padding: 0;
+ margin: 0;
+}
+.uploader-vid {
+  font-size: 1.5em;
+  margin-top: 40px;
+}
+.det {
+  margin-left: 10px;
+}
+.vid-det {
+  padding: 0 0 10px 0;
+}
+/* End Video CSS */
+/* SEARCH TERM */
+.search_term {
+  text-decoration: underline;
+  font-style: italic;
+  font-size: 1.5em;
+}
+.search_term em {
+  
+  color: #0097a7;
+}
+.search_results {
+   border-bottom: 1px solid #ccd;
+   margin-top: 10px;
+}
+.search_results h2{
+  margin: 0;
+  color: #0097a7;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+.search_results p{
+  font-size: 0.4em;
+  color: #777;
+}
+.search_results small {
+  font-size: 0.4em;
+}
+/* END SEARCH TERM */

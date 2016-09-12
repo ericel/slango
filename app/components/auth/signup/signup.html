@@ -1,0 +1,71 @@
+<main class="main main-f" >
+  <div class="main-bg">
+    <div class="main-bg-overlay">
+		<div class="container main-bg-overlay-content">
+		<div ng-hide="hideForm" class="listing-cr">
+		  <form name="form"  novalidate >
+		   <div class="text-center"><ng-md-icon icon="account_child" style="fill:#abcdef" size="60"></ng-md-icon></div>
+		   <h1>Sign up for a Gotube Account</h1>
+		   <md-card>
+			   <md-input-container>
+		       <label for="username">Username:</label>
+		        <input  type="text"  ng-model="username" id="username" name="username" md-autofocus required=""  ng-trim="false" ng-change="username = username.split(' ').join('')">
+		         <div ng-show="form.$submitted || form.username.$touched">
+		          <span ng-show="form.username.$error.required">Enter Username.</span>
+		        </div>
+			  </md-input-container>
+		   </md-card>
+		  <md-card>
+			
+		    <md-input-container>
+		       <label for="uemail">Email Address:</label>
+		        <input type="email"  ng-model="uemail" id="uemail" name="uemail" md-autofocus required="">
+		         <div ng-show="form.$submitted || form.uemail.$touched">
+		          <span ng-show="form.uemail.$error.required">Enter your email.</span>
+		          <span class="error" ng-show="form.uemail.$error.email">This is not a valid email.</span>
+		        </div>
+		    </md-input-container>
+		  </md-card>
+		  <md-card>
+		   <md-input-container>
+		        <label for="password">Password:</label>
+		        <input type="password" name="upassword" id="upassword"  ng-model="upassword" required="">
+		        <div ng-show="form.$submitted || form.upassword.$touched">
+		          <span ng-show="form.upassword.$error.required">Enter your password.</span>
+		        </div>
+		    </md-input-container>
+		  </md-card>
+		  <md-card>
+		  	 <md-input-container>
+		        <label for="password1">Confirm Password:</label>
+		        <input type="password" name="upassword1" id="upassword1"  ng-model="upassword1" required="" pw-check="upassword">
+		        <div ng-show="form.$submitted || form.upassword1.$touched">
+		          <span ng-show="form.upassword1.$error.required">Confirm your password.</span>
+		          <span class="error" ng-show="form.upassword1.$error.pwmatch">Passwords don't match.</span> 
+		        </div>
+
+		    </md-input-container>
+		  </md-card>
+		  <md-card>
+		  
+		     <div class="error">{{error}}</div>   
+	    <md-button type="submit" class="md-raised md-primary" ng-disabled="form.$invalid" ng-click="createUser()">Sign Up</md-button>
+	    
+	    <h3>
+	      Have an account? <a ui-sref="login"> Log In</a>
+	    </h3>
+		</md-card>
+         </form> 
+         </div>   
+	   
+  
+	    <div  class="animate-show animate-hide alert alert-success text-center" ng-show="hideForm">
+	    <h2>Account successfully created! You will be redirected in a moment!</h2>
+	    <div class="text-center">
+           <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+        </div>
+	    </div>
+	   </div>
+  </div>
+ </div>
+</main>

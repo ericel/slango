@@ -1,0 +1,45 @@
+<main class="main" >
+  <div class="main-bg">
+    <div class="main-bg-overlay">
+		<div class="container main-bg-overlay-content listing-cr">
+		   
+		 <form name="form"  novalidate>
+		 <h1 class="card-mg">Log in to Gotube!</h1>
+		   <md-card>
+			   <md-input-container>
+		       <label for="loginemail">Email Address:</label>
+		        <input type="email"  ng-model="loginemail" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }"  id="loginemail" name="loginemail" md-autofocus required="">
+		         <div ng-show="form.$submitted || form.loginemail.$touched">
+		          <span ng-show="form.loginemail.$error.required">Enter your email.</span>
+		          <span class="error" ng-show="form.loginemail.$error.email">This is not a valid email.</span>
+		        </div>
+		    </md-input-container>
+		   </md-card>
+		  <md-card>
+		    <md-input-container>
+		        <label for="password">Password:</label>
+		        <input type="password" name="loginpassword" id="loginpassword"  ng-model="loginpassword" required="">
+		        <div ng-show="form.$submitted || form.loginpassword.$touched">
+		          <span ng-show="form.loginpassword.$error.required">Enter your password.</span>
+		        </div>
+		    </md-input-container>
+		  </md-card>
+		<md-card>
+			<div class="error">{{error}}</div>   
+		    <md-button type="submit" class="md-raised md-primary" ng-click="login()">Log in to Gotube</md-button>
+	   </md-card>
+		    </form> 
+			  
+	    <md-card>        
+		   <h3>
+		      Don't Have an account? <a ui-sref="signup"> Register</a>
+		    </h3>
+	  
+		    <div id='wrapper'  class="animate-show animate-hide alert alert-success" ng-show="hideForm">
+		    <h2>Account successfully created!</h2>{{message}}<p> Go ahead and <a ui-sref="login"> Log In</a></p></div>
+		 
+		</md-card>
+		</div>
+		</div>
+  </div>
+</main>

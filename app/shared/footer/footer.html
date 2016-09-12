@@ -1,0 +1,42 @@
+<footer class="footer">
+<div class="container" >
+<!--<div layout="row" layout-align="space-around">
+      <div style="width:50px"></div>
+      <md-button ng-click="showSimpleToast()">
+        Show Simple
+      </md-button>
+      <md-button class="md-raised" ng-click="showActionToast()">
+        Show With Action
+      </md-button>
+      <div style="width:50px"></div>
+    </div>-->
+
+  <div class="row">
+    <div class="col-md-4">
+    <a  href="#/">
+              <img ng-src="./images/logo_01.png" alt="goaf" />
+            </a>
+     <div ng-show="online">You're online</div>
+ <div ng-hide="online">You're offline</div>
+      <md-button class="md-raised">Country : Korea.</md-button>
+    </div>
+    <div class="col-md-4">
+    <md-button class="md-raised">Language : Korea.</md-button>
+    </div>
+    <div class="col-md-4">
+  
+    <nav>
+      <ul class="nav navbar-nav"> 
+         <li class="active"><a ui-sref="home">Home</a></li>
+         <li ><a ui-sref="about">About</a></li>
+         <li ><a ui-sref="contact">Contact</a></li>
+         <li ><a ui-sref="terms">Terms of service</a></li>
+      </ul>
+    </nav>
+    <div class="row">
+     <small class="small">&copy; 2016 All rights reserved gotube.com</small>
+     </div>
+    </div>
+    </div>
+   </div>
+</footer>
