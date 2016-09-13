@@ -15,7 +15,6 @@ html {
 }
 
 body {
-  margin:0;
   margin-bottom: 60px;
   padding:0;
   position: relative;
@@ -238,7 +237,40 @@ md-sidenav md-toolbar {
 .main {
  min-height: 100%;
 }
-
+.col-home {
+  max-height: 400px;
+  background: url('');
+  clear: both;
+  z-index: 99;
+  position: relative;
+  width:100% !important;
+}
+.col-home section.col-home-bg{
+  background-size: 12px;
+}
+.col-home section.color {
+  background-color: rgb(0,000,000);
+  color: #fff;
+}
+.col-home section.col-home-bg {
+  background-image: url(/images/design/gradient.png);
+}
+.col-home section.col-home-bg {
+  background-repeat: repeat-x;
+  background-position: bottom;
+  background-size: 20px;
+  text-align: center;
+  overflow-wrap: break-word;
+}
+.col-home-bg h1 {
+  font-size: 3em;
+}
+.col-home section {
+  
+}
+*, .col-home section {
+  box-sizing: border-box;
+}
 /* END HOME CSS */
 /* FOOTER CSS */
 .footer {

@@ -40,7 +40,7 @@
           </div>
             <ul class="user-si-a nav navbar-nav navbar-right">
 
-            <li ng-show="slangoUser" class="upload-btn"><a class="btn btn-default" ui-sref="upload">Upload</a></li>
+            <li ng-show="slangoUser" class="upload-btn"><a class="btn btn-default" ui-sref="add">Add <ng-md-icon icon="add" style="fill: ..."></ng-md-icon> </a></li>
 
             <li class="fix-top" ng-hide="slangoUser"><a ui-sref="login">Log in</a></li>
             <li class="fix-top" ng-hide="slangoUser"><a ui-sref="signup">Sign up</a></li>
@@ -51,7 +51,7 @@
             <img  class="user-avatar md-raised md-primary" ng-src="{{userUrlImg}}"" alt="{{slangoUser.displayName}}">
             </a>
             <ng-md-icon ng-click="toggleRight()"
-            ng-hide="isOpenRight()"  icon="toc" style="fill:#A6A6A6" size="40"></ng-md-icon> 
+            ng-hide="isOpenRight()"  icon="view_headline" style="fill:#A6A6A6" size="40"></ng-md-icon> 
           </li>
           </ul>
 

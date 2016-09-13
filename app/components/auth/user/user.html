@@ -3,11 +3,11 @@
 	<section class="col-user-bg color">
 	   <div class="container">
 	      <div class="text-center">
-	        <h1 class="capitalize">{{users.user}}</h1>
-	        <h3>{{users.country}}</h3>
-	        <small>Since: {{users.signupdate | date}}</small>
+	        <h1 class="capitalize">{{slang.user}}</h1>
+	        <h3>{{slang.country}}</h3>
+	        <small>Since: {{slang.signupdate | date}}</small>
 	        <div class="user-pic">
-               <img  class="user-avatar-user  md-raised md-primary" ng-src="{{users.userUrlImg}}" ng-model="userUrlImg" alt="{{users.user}}"><ng-md-icon ng-show="gotubeUserIS" ng-click="showme=true" icon="local_see" style="fill: #ccd" size="60"></ng-md-icon>
+               <img  class="user-avatar-user  md-raised md-primary" ng-src="{{slang.userUrlImg}}" ng-model="userUrlImg" alt="{{slang.user}}"><ng-md-icon ng-show="slangoUserIS" ng-click="showme=true" icon="local_see" style="fill: #ccd" size="60"></ng-md-icon>
 	        </div>
 
 	       <button ng-show="showme" class="btn btn-warning pull-right hidebtn" ng-click="showme=false">X</button>
@@ -21,8 +21,8 @@
 					<label for="file-5"><figure><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg></figure> <span>Choose a file&hellip;</span></label>
 					<div class="progress">
 				  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
-				  aria-valuenow="{{roundNumber(users.determinateValue)}}" aria-valuemin="2" aria-valuemax="100" style="width:{{roundNumber(users.determinateValue)}}%">
-				    {{roundNumber(users.determinateValue)}}% Complete (success)
+				  aria-valuenow="{{roundNumber(slang.determinateValue)}}" aria-valuemin="2" aria-valuemax="100" style="width:{{roundNumber(slang.determinateValue)}}%">
+				    {{roundNumber(slang.determinateValue)}}% Complete (success)
 				  </div>
 			</div>
 				</div>

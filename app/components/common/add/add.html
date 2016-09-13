@@ -1,1 +1,52 @@
-<p>This is the add view.</p>
+<main class="main" >
+  <div class="main-bg">
+    <div class="main-bg-overlay">
+		<div class="container main-bg-overlay-content listing-cr">
+		 <div ng-hide="hideForm"> 
+		 <form name="form"  novalidate>
+		 <h1 class="card-mg">You Are Starting A New Word</h1>
+		   <md-card>
+			   <md-input-container>
+		       <label for="slango">Slang:</label>
+		         <input type="text" name="slango" id="slango"  ng-model="slango" required="">
+		        <div ng-show="form.$submitted || form.slango.$touched" >
+		          <span ng-show="form.slango.$error.required">Enter The New Word.</span>
+		        </div>
+		    </md-input-container>
+		   </md-card>
+		  <md-card>
+		    <md-input-container>
+		        <label for="defineSlang">Define Slang:</label>
+		        <textarea type="text" name="defineSlang" id="defineSlang"  ng-model="defineSlang" required=""></textarea> 
+		        <div ng-show="form.$submitted || form.defineSlang.$touched">
+		          <span ng-show="form.defineSlang.$error.required">What is the meaning?.</span>
+		        </div>
+		    </md-input-container>
+
+		  </md-card>
+		  <md-card>
+		    <md-input-container>
+		        <label for="exSentences">Example Usage:</label>
+		        <textarea type="text" name="exSentences" id="exSentences"  ng-model="exSentences" required=""></textarea>
+		        <div ng-show="form.$submitted || form.exSentences.$touched">
+		          <span ng-show="form.exSentences.$error.required">Example Sentences?.</span>
+		        </div>
+		    </md-input-container>
+		    
+		  </md-card>
+		<md-card>
+			<div class="error">{{error}}</div>   
+		    <md-button type="submit" class="md-raised md-primary" ng-disabled="form.$invalid" ng-click="addSlango()">Add to Slango</md-button>
+	   </md-card>
+		    </form> 
+		</div>	  
+	    <md-card ng-show="hideForm">        
+		 
+		    <div  id='wrapper'  class="animate-show animate-hide alert alert-success" >
+		    <h2>Slang Added successfully!</h2>{{message}}</div>
+		 
+		</md-card>
+		</div>
+		</div>
+  </div>
+</main>

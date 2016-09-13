@@ -15,13 +15,14 @@ angular.module('slangoApp')
 
   	$scope.$parent.seo = {
         pageTitle : vm.user + ' ' + 'User account',
-        pageDescripton: 'Gotube user account'
+        pageDescripton: 'slango user account'
     };
     
     vm.auth = authService.isLoggedIn();
      var storageRef = firebase.storage().ref();
     
   firebaseService.getUser(vm.uid).then( function(snapshot){
+  	console.log(snapshot.val());
      vm.username = snapshot.val().username;
      vm.userUrlImg = snapshot.val().profile_picture;
      vm.country  = snapshot.val().country;
@@ -33,9 +34,9 @@ angular.module('slangoApp')
 		  
   
     vm.auth.$onAuthStateChanged(function(user) {
-      $scope.gotubeUser = user;
-     if (currentAuth && vm.uid === $scope.gotubeUser.uid) {
-     	$scope.gotubeUserIS = true;
+      $scope.slangoUser = user;
+     if (currentAuth && vm.uid === $scope.slangoUser.uid) {
+     	$scope.slangoUserIS = true;
      $scope.testImage = function(url, timeoutT) {
         return new Promise(function(resolve, reject) {
           var timeout = timeoutT || 5000;
@@ -56,8 +57,8 @@ angular.module('slangoApp')
           img.src = url;
         });
     };
-    if( $scope.gotubeUser){
-     $scope.testImage($scope.gotubeUser.photoURL);
+    if( $scope.slangoUser){
+     $scope.testImage($scope.slangoUser.photoURL);
     }
     $scope.functionBCompleted = false;
     $scope.roundNumber = function(i) {
@@ -77,7 +78,7 @@ angular.module('slangoApp')
 	      // Push to child path.
 	      // [START oncomplete]
 
-	      storageRef.child('user/'+$scope.gotubeUser.uid+'/' + file.name).put(file, metadata).then(function(snapshot) {
+	      storageRef.child('user/'+$scope.slangoUser.uid+'/' + file.name).put(file, metadata).then(function(snapshot) {
 	        //console.log('Uploaded', snapshot.totalBytes, 'bytes.');
 	        vm.determinateValue = snapshot.totalBytes;
 	        //console.log(snapshot.metadata);
@@ -105,8 +106,8 @@ angular.module('slangoApp')
 			});
 	        // [END_EXCLUDE]
 	        }*/
-	        firebaseService.updateUserTable($scope.gotubeUser.uid, snapshot.metadata.downloadURLs[0]);
-	        $scope.gotubeUser.updateProfile({
+	        firebaseService.updateUserTable($scope.slangoUser.uid, snapshot.metadata.downloadURLs[0]);
+	        $scope.slangoUser.updateProfile({
 	          photoURL: snapshot.metadata.downloadURLs[0]  
 	        });
         

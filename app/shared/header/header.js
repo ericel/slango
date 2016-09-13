@@ -12,7 +12,7 @@ angular.module('slangoApp')
      var vm = this;
 
     //$scope.error = "Enter a better search term";
-    $scope.searchGotube = function(searchString){
+    $scope.searchSlango = function(searchString){
        if (searchString == undefined) {
             return;
         }
@@ -27,7 +27,7 @@ angular.module('slangoApp')
     vm.auth = authService.isLoggedIn();
   
     vm.auth.$onAuthStateChanged(function(user) {
-      $scope.gotubeUser = user;
+      $scope.slangoUser = user;
      $scope.testImage = function(url, timeoutT) {
         return new Promise(function(resolve, reject) {
           var timeout = timeoutT || 5000;
@@ -48,8 +48,8 @@ angular.module('slangoApp')
           img.src = url;
         });
     };
-    if( $scope.gotubeUser){
-     $scope.testImage($scope.gotubeUser.photoURL);
+    if( $scope.slangoUser){
+     $scope.testImage($scope.slangoUser.photoURL);
     }
      
     });
@@ -129,7 +129,7 @@ angular.module('slangoApp')
           $log.debug("close RIGHT is done");
         });
     };
-    /*$.getJSON("https://gotube-a0034.firebaseio.com/user-videos.json", function(json) {
+    /*$.getJSON("https://slango-a0034.firebaseio.com/user-videos.json", function(json) {
     console.log(json); // this will show the info it in firebug console
     });*/
   });

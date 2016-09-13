@@ -10,22 +10,22 @@
 angular.module('slangoApp')
   .service('indexDBService', function ($indexedDB, firebaseService, $q) {
    var objects = [];
-   var addToVideos = [];
+   var addToSlangs = [];
    var _this = this;
 
-   firebaseService.getvideosApi().then(function(response){
-      _this.videos = response.data;
-      var userVideos = _this.videos;
-      for (var key in userVideos) {
-        if (userVideos.hasOwnProperty(key)) {
-           var video = {"file_id": userVideos[key].file_id, "filename": userVideos[key].filename, "file_status": userVideos[key].file_status, "user_id": userVideos[key].user_id, "video_avatar": userVideos[key].video_avatar, "upload_date": userVideos[key].upload_date, "file_dislikes": userVideos[key].file_dislikes, "file_likes": userVideos[key].file_likes, "downloadUrl": userVideos[key].downloadUrl}
-        addToVideos.push(video);
+   firebaseService.getSlangs().then(function(response){
+      _this.slangs = response.data;
+      var userSlangs = _this.slangs;
+      for (var key in userSlangs) {
+        if (userSlangs.hasOwnProperty(key)) {
+           var slang = {"slang": userSlangs[key].slang, "slangDefine": userSlangs[key].slangDefine, "slangExample": userSlangs[key].slangExample, "user_id": userSlangs[key].user_id, "time_date": userSlangs[key].time_date, "file_dislikes": userSlangs[key].file_dislikes, "file_likes": userSlangs[key].file_likes}
+        addToSlangs.push(slang);
         }
       }
-      if((objects.length) < (Object.keys(_this.videos).length)){
+      if((objects.length) < (Object.keys(_this.slangs).length)){
         
-        $indexedDB.openStore('userVideos', function(store){
-          store.upsert(addToVideos).then(function(e){
+        $indexedDB.openStore('userSlangs', function(store){
+          store.upsert(addToSlangs).then(function(e){
             // do something
           });
         });
@@ -40,9 +40,9 @@ angular.module('slangoApp')
        deferred.resolve(_this.vObjects);
      } else {
 
-		$indexedDB.openStore('userVideos', function(store){
-		       store.getAll().then(function(userVideos) { 
-		        objects = userVideos;
+		$indexedDB.openStore('userSlangs', function(store){
+		       store.getAll().then(function(userSlangs) { 
+		        objects = userSlangs;
 		        _this.vObjects = objects;
 		       deferred.resolve(objects);
 		        });

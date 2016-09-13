@@ -21,7 +21,7 @@ angular.module('slangoApp')
     };
 
     this.isLoggedIn = function(){
-      	return $firebaseAuth();
+      	return firebaseAuthObject;
     };
 
     this.signOutUser = function() {

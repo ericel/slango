@@ -42,9 +42,9 @@ angular
  }])
    .config(function ($indexedDBProvider) {
     $indexedDBProvider
-      .connection('gotubeVideos')
+      .connection('slango')
       .upgradeDatabase(1, function(event, db, tx){
-        var objStore = db.createObjectStore('userVideos', {keyPath: 'file_id'});
+        var objStore = db.createObjectStore('userSlangs', {keyPath: 'slang'});
       });
   })
   .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {

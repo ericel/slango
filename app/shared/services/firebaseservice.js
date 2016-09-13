@@ -8,21 +8,12 @@
  * Service in the slangoApp.
  */
 angular.module('slangoApp')
-  .service('firebaseService', function ($http, CacheFactory) {
-  	var videosCache;
-      // Check to make sure the cache doesn't already exist
-	if (!CacheFactory.get('videosCache')) {
-	  videosCache = CacheFactory('videosCache');
-	}
+  .service('firebaseService', function ($http) {
+
     
-    videosCache.put('/profiles/34', {
-	    name: 'John',
-	    skills: ['programming', 'piano']
-    });
-    
-  	this.getvideosApi = function() {
+  	this.getSlangs = function() {
   	  
-        return $http.get('https://gotube-a0034.firebaseio.com/user-videos.json', {  cache: true });
+       return $http.get('https://slango-70929.firebaseio.com/s-slango.json', {  cache: true });
     };
 
     
@@ -46,24 +37,23 @@ angular.module('slangoApp')
 	}
 
 	this.getUser = function(uid){
-	 return firebase.database().ref('/users/' +uid).once('value');
+	 return firebase.database().ref('/users/'+uid).once('value');
+	 //return $http.get('https://slango-70929.firebaseio.com/users/'+uid+'.json', {  cache: true });
 	}
 
 	/*this.getVideo = function(vid){
 	 return firebase.database().ref('/user-videos/' +uid).once('value');
 	}*/
 
-	this.addVideo = function(mdfile, filename, video_avatar, filetypeshow, uid, downloadURL, getDatetime){
-		 firebase.database().ref('user-videos/' + mdfile).set({
-		    file_id: mdfile,
-		    filename: filename,
-		    video_avatar: video_avatar,
-		    file_status: filetypeshow,
+	this.addSlang = function(slang, slangDefine, slangExample, uid, getDatetime){
+		 firebase.database().ref('s-slango/' + slang).set({
+		    slang: slang,
+		    slangDefine: slangDefine,
+		    slangExample: slangExample,
 		    file_likes: 0,
 		    file_dislikes: 0,
 		    user_id: uid,
-		    downloadUrl : downloadURL,
-		    upload_date : getDatetime
+		    time_date : getDatetime
 		  });
 	}
 

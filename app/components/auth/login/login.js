@@ -9,6 +9,10 @@
  */
 angular.module('slangoApp')
   .controller('LoginCtrl', function ($scope, $location, authService, currentAuth) {
+    $scope.$parent.seo = {
+        pageTitle : 'Log in To Slango',
+        pageDescripton: 'Log in to slango'
+    };
     if (currentAuth) {
       $location.path('/');
      } 
@@ -16,7 +20,7 @@ angular.module('slangoApp')
       $scope.error = null;
       //$scope.loginemail
       //$scope.loginpassword
-      authService.login('ericel123@gmail.com', 'yaounde')
+      authService.login($scope.loginemail, $scope.loginpassword)
       .then(function(authData) {
         //$scope.authData = userAuth.getUserData();
         $location.path('/');

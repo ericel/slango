@@ -1,1 +1,22 @@
-<p>This is the home view.</p>
+<main class="main">
+<div class="col-home"> 
+<section class="col-home-bg color">
+  <div class=" container">
+  <div class="row">
+	<h1>Language Slangs!</h1>
+	<p>What The Fuck?</p>
+	<p>Add your own word to the slango wiki. It maybe considered a real word someday!</p>
+	</div>
+ </div>
+ </section>
+ </div>
+
+ <div class="container">
+  <div class="row">
+    <div class="col-md-3" ng-repeat="slang in slang.slangs">
+      <h1 class="capitalize"><a ui-sref="slang({sid: (slang.slang | removeSpaces)})">{{slang.slang}}</a></h1>
+      <p>{{slang.slangDefine}}</p>
+    </div>
+  </div>
+ </div>
+</main>

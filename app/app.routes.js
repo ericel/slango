@@ -79,20 +79,20 @@ angular.module('slangoApp')
         }]
       }
       })
-      .state('upload', {
-        url: '/upload',
-        templateUrl: 'components/common/upload/upload.html',
-        controller: 'UploadCtrl as slang',
+      .state('add', {
+        url: '/add',
+        templateUrl: 'components/common/add/add.html',
+        controller: 'AddCtrl as slang',
         resolve: {
         "currentAuth": ["Auth", function(Auth) {
           return Auth.$requireSignIn();
         }]
       }
       })
-       .state('Add', {
-        url: '/Add/:vid/:title',
-        templateUrl: 'components/common/Add/Add.html',
-        controller: 'AddCtrl as slang',
+       .state('slang', {
+        url: '/slang/:sid',
+        templateUrl: 'components/common/slang/slang.html',
+        controller: 'SlangCtrl as slang',
         resolve: {
         "currentAuth": ["Auth", function(Auth) {
           return Auth.$waitForSignIn();
