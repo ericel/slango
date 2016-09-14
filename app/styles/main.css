@@ -234,6 +234,14 @@ md-sidenav md-toolbar {
 /* END MENU CSS */
 
 /* HOME CSS */
+@media screen and (min-width: 700px){
+.col-re{
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+}
 .main {
  min-height: 100%;
 }

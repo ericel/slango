@@ -18,7 +18,7 @@ angular.module('slangoApp')
       var userSlangs = _this.slangs;
       for (var key in userSlangs) {
         if (userSlangs.hasOwnProperty(key)) {
-           var slang = {"slang": userSlangs[key].slang, "slangDefine": userSlangs[key].slangDefine, "slangExample": userSlangs[key].slangExample, "user_id": userSlangs[key].user_id, "time_date": userSlangs[key].time_date, "file_dislikes": userSlangs[key].file_dislikes, "file_likes": userSlangs[key].file_likes}
+           var slang = {"slang": userSlangs[key].slang, "slangDefine": userSlangs[key].slangDefine, "slangExample": userSlangs[key].slangExample, "user_id": userSlangs[key].user_id, "time_date": userSlangs[key].time_date, "file_dislikes": userSlangs[key].file_dislikes, "file_likes": userSlangs[key].file_likes, "slangID": userSlangs[key].slangID}
         addToSlangs.push(slang);
         }
       }

@@ -1,1 +1,19 @@
-<p>This is the slang view.</p>
+<main class="main" row>
+<div class="col-home"> 
+<section class="col-home-bg color">
+  <div class=" container">
+  <div class="row col-re">
+		<h1 class="capitalize">{{slang.title}}</h1>
+		<h2>What is the meaning of {{slang.title}}?</h2>
+		<p>{{slang.defined}}</p>
+	    <h2>How is {{slang.title}} used?</h2>
+	    <p>{{slang.slangEx}}</p>
+	    <div>
+	     <b class="capitalize">Added By {{slang.username}}</b>
+	    <small>{{slang.date_added | date:'yyyy/mm/dd'}}</small>
+	    </div>
+	</div>
+ </div>
+ </section>
+ </div>
+ </main>

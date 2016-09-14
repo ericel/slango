@@ -45,8 +45,9 @@ angular.module('slangoApp')
 	 return firebase.database().ref('/user-videos/' +uid).once('value');
 	}*/
 
-	this.addSlang = function(slang, slangDefine, slangExample, uid, getDatetime){
-		 firebase.database().ref('s-slango/' + slang).set({
+	this.addSlang = function(sID, slang, slangDefine, slangExample, uid, getDatetime){
+		 firebase.database().ref('s-slango/' + sID).set({
+		 	slangID: sID,
 		    slang: slang,
 		    slangDefine: slangDefine,
 		    slangExample: slangExample,

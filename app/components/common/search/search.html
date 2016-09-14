@@ -1,1 +1,18 @@
-<p>This is the search view.</p>
+<div class="container">
+		<h1 class="search_term">You are searching for <em>"{{slang.search_term}}"</em><h1>
+	<div class="row">
+       <div class="col-md-6">
+       <div ng-hide="haveResults" class="search_results" ng-repeat="slang in slang.searchObj">
+	        <h2><a ui-sref="slang({sid: slang.slangID, title: (slang.slang | removeSpaces)  })">{{slang.slang}}</a></h2>
+	        <small class="small">Added {{slang.time_date | date:'yyyy/mm/dd'}}</small>
+	        <p> {{slang.slangDefine | limitTo:50 }}..</p>
+       </div>
+       <div ng-show="haveResults" class="alert alert-warning">{{message}}</div>
+       
+       </div>
+
+       <div class="col-md-6">
+
+       </div>
+	</div>
+</div>

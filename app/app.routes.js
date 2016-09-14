@@ -90,7 +90,7 @@ angular.module('slangoApp')
       }
       })
        .state('slang', {
-        url: '/slang/:sid',
+        url: '/slang/:sid/:title',
         templateUrl: 'components/common/slang/slang.html',
         controller: 'SlangCtrl as slang',
         resolve: {

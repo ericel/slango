@@ -11,14 +11,14 @@ angular.module('slangoApp')
   .controller('HomeCtrl', function ($scope,  $sce, $timeout, firebaseService, currentAuth, indexDBService) {
     var vm = this;
       $scope.$parent.seo = {
-        pageTitle : 'World of online media',
-        pageDescripton: 'Welcome to gotube. World of online media'
+        pageTitle : 'World of slangs',
+        pageDescripton: 'World Slangs Database'
     };
 
     indexDBService.getVobj().then(function(vObj){
       vm.slangs = vObj;
       if(vm.slangs.length === 0) {
-        firebaseService.getvideosApi().then(function(response) {
+        firebaseService.getSlangs().then(function(response) {
             vm.slangs = response.data;
             
         });
