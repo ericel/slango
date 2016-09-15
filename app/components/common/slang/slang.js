@@ -8,7 +8,7 @@
  * Controller of the slangoApp
  */
 angular.module('slangoApp')
-  .controller('SlangCtrl', function ($scope,  $sce, $timeout, firebaseService, currentAuth, indexDBService, $location, $stateParams, $log) {
+  .controller('SlangCtrl', function ($scope,  authService, md5, $timeout, firebaseService, currentAuth,  $location, $stateParams, $log, $interval, indexDBService) {
   	var vm = this;
   	vm.sid = $stateParams.sid;
   	vm.title = $stateParams.title.replace(/\-+/g, ' ');
@@ -16,26 +16,28 @@ angular.module('slangoApp')
         pageTitle : vm.title,
         pageDescripton: vm.title
     };
-    indexDBService.getVobj().then(function(vObj){
-      vm.slangs = vObj;
-      /*if(vm.slangs.length === 0) {
-        firebaseService.getSlangs().then(function(response) {
-           vm.slangs = response.data; 
-           var filtered =  vm.slangs[vm.sid];  
-           vm.defined = filtered.slangDefine;
-           vm.slangEx = filtered.slangExample;
-           vm.likesSlang = filtered.file_likes;
-           vm.dislikesSlang = filtered.file_dislikes;
-           vm.date_added = filtered.time_date;
-           vm.uid= filtered.user_id;
+    if (navigator.onLine) {
+       firebaseService.getSlangs().on('value', function(response) {
+           vm.slangs = response.val(); 
+            vm.defined = vm.slangs[vm.sid].slangDefine;
+            vm.slangEx = vm.slangs[vm.sid].slangExample;
+            vm.likesSlang = vm.slangs[vm.sid].file_likes;
+            vm.dislikesSlang = vm.slangs[vm.sid].file_dislikes;
+            vm.date_added = vm.slangs[vm.sid].time_date;
+            vm.uid= vm.slangs[vm.sid].user_id;
+            firebaseService.getUser(vm.uid).on('value', function(snapshot) {
+            vm.username = snapshot.val().username;
+            vm.userUrlImg = snapshot.val().profile_picture;
+            $scope.$apply();
+           });
         });
-      } else {*/
-      console.log(vm.slangs);
+    } else {
+   indexDBService.getVobj().then(function(vObj){
+      vm.slangs = vObj;
+
       var filtered =  vm.slangs.filter(function(item) {
         return item.slangID === vm.sid;
       });
-      console.log(filtered);
-      
 
         vm.defined = filtered[0].slangDefine;
         vm.slangEx = filtered[0].slangExample;
@@ -43,15 +45,76 @@ angular.module('slangoApp')
         vm.dislikesSlang = filtered[0].file_dislikes;
         vm.date_added = filtered[0].time_date;
         vm.uid= filtered[0].user_id;
-      //}
-     
-     firebaseService.getUser(vm.uid).then( function(snapshot){
+        firebaseService.getUser(vm.uid).on('value', function(snapshot) {
          vm.username = snapshot.val().username;
          vm.userUrlImg = snapshot.val().profile_picture;
-         vm.country  = snapshot.val().country;
-         vm.signupdate = snapshot.val().sign_date;
          $scope.$apply();
-      })
-
+      });
+ 
   });
+ }
+
+$scope.loadComments = function(){
+  if (navigator.onLine) {
+    firebaseService.getSlangComments().on('value', function(response) {
+      vm.comments = response.val();
+      var result = [];
+      for(var key in vm.comments){
+          if(vm.comments[key].slangID == vm.sid)
+              result.push(vm.comments[key]);
+      }
+       vm.comments = result;
+    });
+  } else {
+    indexDBService.getVobjComments().then(function(vObjv){
+      vm.comments = vObjv;
+      
+      var filtered =  vm.comments.filter(function(item) {
+        return item.slangID === vm.sid;
+      });
+      vm.comments = filtered;
+  
+    });
+  }
+}
+$scope.loadComments();
+
+
+
+vm.getDatetime = new Date().toJSON();
+
+vm.hideSuccess = false;
+  vm.auth = authService.isLoggedIn();
+  vm.auth.$onAuthStateChanged(function(user) {
+          $scope.slangoUser = user;
+          vm.currentUID = user.uid;
+          vm.currentUsername = user.displayName;
+          vm.commentID = md5.createHash('comment'+vm.getDatetime+$scope.slangoUser);
+
+        $scope.createComment = function(){
+         if($scope.form.$invalid){
+          $scope.error = "Make sure you fill all form fields!";
+          return;
+          }
+          firebaseService.addComment(vm.commentID, vm.sid, vm.currentUID, vm.currentUsername, $scope.comment, vm.getDatetime).then(function(){
+              
+            // Reset the form model.
+            $scope.comment = '';
+            // Set back to pristine.
+            $scope.form.$setPristine();
+            // Since Angular 1.3, set back to untouched state.
+            $scope.form.$setUntouched();
+            vm.hideSuccess = true;
+            vm.message = "Comment Added Successfully!";
+             $scope.loadComments();
+             $timeout(function(){
+              vm.hideSuccess = false;
+             }, 3000);
+          });
+
+      };  
+ });
+  
+
+
   });

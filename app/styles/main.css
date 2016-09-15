@@ -382,7 +382,75 @@ md-card {
   border-radius: 0.2em;
   font-size: 1.5em;
 }
+.comment {
+  border: 2px dashed #ccd;
+  margin-top: 10px;
+  border-bottom: 2px dashed #ccd;
+}
+img.user-avatar-c{
+  height: 80px;
+  width:80px;
+  margin-top: 10px;
+  border-radius: 100%;
+  box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+   -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
+    filter: grayscale(100%);
+}
+.co-user{
+  font-size: 2em;
+  color: #444;
+}
+img.user-avatar-co {
+
+  height: 50px;
+  width:50px;
+  margin-top: 10px;
+  border-radius: 100%;
+  box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+  border: 2px solid #0097a7;
+}
 /* END Form Css */
+/* Slang Css */
+ul.col-comments {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.col-comments {
+ 
+  position: relative;
+  margin-top: 20px !important;
+}
+.col-comments:before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: 1;
+    left: 5px;
+    top: 0;
+    bottom: 0;
+    border-left: 1px solid #0097a7;
+}
+
+.col-comments li {
+  padding: 20px 32px;
+  position: relative;
+}
+.col-comments li:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width:28px;
+    left: 5px;
+    border-top: 1px solid #0097a7;
+    z-index: 1;
+    margin-top: 10px;
+}
+.col-comments .timeadded {
+
+}
+
+/*End Slang Css */
 /* Account Css */
 .col-user {
   max-height: 400px;
@@ -440,321 +508,13 @@ img.user-avatar-user{
   margin-right: auto;
 }
 
-
-/*
-  By Osvaldas Valutis, www.osvaldas.info
-  Available for use under the MIT License
-*/
-.hidden {
-  position: absolute;
-  overflow: hidden;
-  width: 0;
-  height: 0;
-  pointer-events: none;
-}
-.inputfile {
-    width: 0.1px;
-    height: 0.1px;
-    opacity: 0;
-    overflow: hidden;
-    position: absolute;
-    z-index: -1;
-
-}
-
-.inputfile + label {
-    max-width: 80%;
-    font-size: 1.25rem;
-    /* 20px */
-    font-weight: 700;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    cursor: pointer;
-    display: inline-block;
-    overflow: hidden;
-    padding: 0.625rem 1.25rem;
-    /* 10px 20px */
-}
-
-.no-js .inputfile + label {
-    display: none;
-}
-
-.inputfile:focus + label,
-.inputfile.has-focus + label {
-    outline: 1px dotted #000;
-    outline: -webkit-focus-ring-color auto 5px;
-}
-
-.inputfile + label * {
-    /* pointer-events: none; */
-    /* in case of FastClick lib use */
-}
-
-.inputfile + label svg {
-    width: 1em;
-    height: 1em;
-    vertical-align: middle;
-    fill: currentColor;
-    margin-top: -0.25em;
-    /* 4px */
-    margin-right: 0.25em;
-    /* 4px */
-}
-
-
-/* style 1 */
-
-.inputfile-1 + label {
-    color: #f1e5e6;
-    background-color: #d3394c;
-}
-
-.inputfile-1:focus + label,
-.inputfile-1.has-focus + label,
-.inputfile-1 + label:hover {
-    background-color: #722040;
-}
-
-
-/* style 2 */
-
-.inputfile-2 + label {
-    color: #d3394c;
-    border: 2px solid currentColor;
-}
-
-.inputfile-2:focus + label,
-.inputfile-2.has-focus + label,
-.inputfile-2 + label:hover {
-    color: #722040;
-}
-
-
-/* style 3 */
-
-.inputfile-3 + label {
-    color: #d3394c;
-}
-
-.inputfile-3:focus + label,
-.inputfile-3.has-focus + label,
-.inputfile-3 + label:hover {
-    color: #722040;
-}
-
-
-/* style 4 */
-
-.inputfile-4 + label {
-    color: #d3394c;
-}
-
-.inputfile-4:focus + label,
-.inputfile-4.has-focus + label,
-.inputfile-4 + label:hover {
-    color: #722040;
-}
-
-.inputfile-4 + label figure {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background-color: #d3394c;
-    display: block;
-    padding: 20px;
-    margin: 0 auto 10px;
-}
-
-.inputfile-4:focus + label figure,
-.inputfile-4.has-focus + label figure,
-.inputfile-4 + label:hover figure {
-    background-color: #722040;
-}
-
-.inputfile-4 + label svg {
-    width: 100%;
-    height: 100%;
-    fill: #f1e5e6;
-}
-
-
-/* style 5 */
-
-.inputfile-5 + label {
-    color: #d3394c;
-}
-
-.inputfile-5:focus + label,
-.inputfile-5.has-focus + label,
-.inputfile-5 + label:hover {
-    color: #722040;
-}
-
-.inputfile-5 + label figure {
-    width: 100px;
-    height: 135px;
-    background-color: #d3394c;
-    display: block;
-    position: relative;
-    padding: 30px;
-    margin: 0 auto 10px;
-}
-
-.inputfile-5:focus + label figure,
-.inputfile-5.has-focus + label figure,
-.inputfile-5 + label:hover figure {
-    background-color: #722040;
-}
-
-.inputfile-5 + label figure::before,
-.inputfile-5 + label figure::after {
-    width: 0;
-    height: 0;
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
-.inputfile-5 + label figure::before {
-    border-top: 20px solid #dfc8ca;
-    border-left: 20px solid transparent;
-}
-
-.inputfile-5 + label figure::after {
-    border-bottom: 20px solid #722040;
-    border-right: 20px solid transparent;
-}
-
-.inputfile-5:focus + label figure::after,
-.inputfile-5.has-focus + label figure::after,
-.inputfile-5 + label:hover figure::after {
-    border-bottom-color: #d3394c;
-}
-
-.inputfile-5 + label svg {
-    width: 100%;
-    height: 100%;
-    fill: #f1e5e6;
-}
-
-
-/* style 6 */
-
-.inputfile-6 + label {
-    color: #d3394c;
-}
-
-.inputfile-6 + label {
-    border: 1px solid #d3394c;
-    background-color: #f1e5e6;
-    padding: 0;
-}
-
-.inputfile-6:focus + label,
-.inputfile-6.has-focus + label,
-.inputfile-6 + label:hover {
-    border-color: #722040;
-}
-
-.inputfile-6 + label span,
-.inputfile-6 + label strong {
-    padding: 0.625rem 1.25rem;
-    /* 10px 20px */
-}
-
-.inputfile-6 + label span {
-    width: 200px;
-    min-height: 2em;
-    display: inline-block;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    vertical-align: top;
-}
-
-.inputfile-6 + label strong {
-    height: 100%;
-    color: #f1e5e6;
-    background-color: #d3394c;
-    display: inline-block;
-}
-
-.inputfile-6:focus + label strong,
-.inputfile-6.has-focus + label strong,
-.inputfile-6 + label:hover strong {
-    background-color: #722040;
-}
-
-@media screen and (max-width: 50em) {
-  .inputfile-6 + label strong {
-    display: block;
-  }
-}
 .hidebtn {
   
   position: relative;
   right:0;
 }
 /*End Account Css */
-/* UPLOAD CSS */
-.navbar-au-m a {
- float: left;
- padding-top: 10px;
-}
-li.upload-btn {
-  padding-top: 10px;
-  float: left !important;
-}
-li.upload-btn .btn{
-  padding: 5px;
-}
-canvas {
-  border: 3px solid #0097a7;
-  border-radius: 4px;
-  width: 100%;
-}
-.button {
-    -moz-appearance: button;
-    /* Firefox */
-    -webkit-appearance: button;
-    /* Safari and Chrome */
-    padding: 10px;
-    margin: 10px;
-    width: 70px;
-}
-.box {
-    background: #F8F8F8;
-    border: 5px dashed #DDD;
-    text-align: center;
-    padding-top: 25px;
-    margin: 10px;
-}
 
-.canvas__container {
-  height: 100%;
-  position: relative;
-  width: 100%;
-}
-.canvas__canvas {
-  height: 100%;
-  position: relative;
-  width: 100%;
-  z-index: 1;
-}
-.canvas__mirror {
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%; 
-}
-.progress-dis .md-container, .progress-dis .md-bar{
-  height:20px !important;
-}
-
-/* END UPLOAD CSS */
 /* ADS CSS */
 .ads-box-s {
   width: 100%;
@@ -765,61 +525,7 @@ canvas {
   padding-top: 30%;
 }
 /* END ADS Css */
-/* Video CSS */
-.video {
-  position: relative;
-  text-align: center;
-  height: 180px;
-  overflow: hidden;
-}
-@media screen and (max-width: 868px){
-.video {
-height: auto;
-box-shadow: 0 0 1px rgba(0,0,0,.14),0 1px 1px rgba(0,0,0,.28);
-}
-}
-.video img{
-  width:100%;
-}
-.video .over-vid-lay{
-  top: -50px;
-  position: relative;
-  background: rgba(0,0,0,.8);
-  height: 50px;
-  color: #ffffff;
-  font-size: 1.2em;
-}
-.over-vid-lay a {
-  color: #ccd;
-}
-.video-player {
-  background: #000000;
-  padding-top: 5px;
-}
-@media screen and (max-width: 768px){
-.video-player {
-  padding-top: 10px;
-}
-}
-.sh-r {
-  color:#CBCBCB;
-}
-.vidtitle {
- font-size: 1.8em;
- padding: 0;
- margin: 0;
-}
-.uploader-vid {
-  font-size: 1.5em;
-  margin-top: 40px;
-}
-.det {
-  margin-left: 10px;
-}
-.vid-det {
-  padding: 0 0 10px 0;
-}
-/* End Video CSS */
+
 /* SEARCH TERM */
 .search_term {
   text-decoration: underline;

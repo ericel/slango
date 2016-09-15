@@ -14,20 +14,25 @@ angular.module('slangoApp')
         pageDescripton: 'Increase the slang dictionary'
     };
     var vm = this;
-    vm.getDatetime = new Date().toJSON();
-
-     vm.auth = authService.isLoggedIn();
+    vm.auth = authService.isLoggedIn();
     $scope.hideForm = false;
     vm.auth.$onAuthStateChanged(function(user) {
     $scope.slangoUser = user;
-    vm.slangID = md5.createHash('hello'+vm.getDatetime+$scope.slangoUser);
+    
     $scope.addSlango = function(){
 	    if($scope.form.$invalid){
 	    	$scope.error = "Make sure you fill all form fields!";
 	    	return;
 	    }
-	    firebaseService.addSlang(vm.slangID, $scope.slango, $scope.defineSlang, $scope.exSentences, $scope.slangoUser.uid, vm.getDatetime);
-	    $scope.hideForm = true;
+      vm.getDatetime = new Date().toJSON();
+      vm.slangID = md5.createHash('hello'+vm.getDatetime+$scope.slangoUser);
+	    firebaseService.addSlang(vm.slangID, $scope.slango, $scope.defineSlang, $scope.exSentences, $scope.slangoUser.uid, vm.getDatetime).then(function(){
+        $scope.hideForm = true;
+      });
+	    
     }
 	});
+    if("4b06dd79390c86312fcb73b81b29bf70" === "4b06dd79390c86312fcb73b81b29bf70"){
+      console.log('true');
+    }
   });

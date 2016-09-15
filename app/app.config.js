@@ -45,6 +45,7 @@ angular
       .connection('slango')
       .upgradeDatabase(1, function(event, db, tx){
         var objStore = db.createObjectStore('userSlangs', {keyPath: 'slang'});
+        var objStore = db.createObjectStore('slangComments', {keyPath: 'commentID'});
       });
   })
   .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
@@ -65,14 +66,15 @@ angular
     });
 }).run(function (offline, $http, connectionStatus, $log, $rootScope) {
   offline.start($http);
-   connectionStatus.$on('online', function () {
-    $log.info('We are now online');
-     $rootScope.online = true;
-  });
-
   connectionStatus.$on('offline', function () {
     $log.info('We are now offline');
    $rootScope.online = false;
 
   });
+   connectionStatus.$on('online', function () {
+    $log.info('We are now online');
+     $rootScope.online = true;
+  });
+
+  
 });

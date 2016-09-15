@@ -14,16 +14,15 @@ angular.module('slangoApp')
         pageTitle : 'World of slangs',
         pageDescripton: 'World Slangs Database'
     };
-
+   if (navigator.onLine) {
+    firebaseService.getSlangs().on('value', function(response) {
+      vm.slangs = response.val();
+     });
+  } else {
     indexDBService.getVobj().then(function(vObj){
       vm.slangs = vObj;
-      if(vm.slangs.length === 0) {
-        firebaseService.getSlangs().then(function(response) {
-            vm.slangs = response.data;
-            
-        });
-      }
     });
+  }
   })
   .filter('removeSpaces', [function() {
     return function(string) {

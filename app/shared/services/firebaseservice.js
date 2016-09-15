@@ -8,18 +8,12 @@
  * Service in the slangoApp.
  */
 angular.module('slangoApp')
-  .service('firebaseService', function ($http) {
-
-    
-  	this.getSlangs = function() {
-  	  
-       return $http.get('https://slango-70929.firebaseio.com/s-slango.json', {  cache: true });
-    };
-
+  .service('firebaseService', function ($http, offline) {
     
 	 this.writeUserData = function(userId, name, email, imageUrl, country, getDatetime) {
 
-		  firebase.database().ref('users/' + userId).set({
+		  firebase.database().ref('sl-users/' + userId).set({
+		  	user_id: userId,
 		    username: name,
 		    email: email,
 		    profile_picture : imageUrl,
@@ -29,7 +23,7 @@ angular.module('slangoApp')
 	}
 
 	this.updateUserTable = function(userId, photoUrl){
-          firebase.database().ref('users/' + userId).update({
+          firebase.database().ref('sl-users/' + userId).update({
 
 		    profile_picture : photoUrl
 		   
@@ -37,8 +31,7 @@ angular.module('slangoApp')
 	}
 
 	this.getUser = function(uid){
-	 return firebase.database().ref('/users/'+uid).once('value');
-	 //return $http.get('https://slango-70929.firebaseio.com/users/'+uid+'.json', {  cache: true });
+	 return firebase.database().ref('/sl-users/'+uid);
 	}
 
 	/*this.getVideo = function(vid){
@@ -46,7 +39,7 @@ angular.module('slangoApp')
 	}*/
 
 	this.addSlang = function(sID, slang, slangDefine, slangExample, uid, getDatetime){
-		 firebase.database().ref('s-slango/' + sID).set({
+		return firebase.database().ref('s-slango/' + sID).set({
 		 	slangID: sID,
 		    slang: slang,
 		    slangDefine: slangDefine,
@@ -57,22 +50,23 @@ angular.module('slangoApp')
 		    time_date : getDatetime
 		  });
 	}
-
-	this.getRecentVideos = function(){
-	    return   firebase.database().ref('user-videos');
-	    // firebase.database().ref('user-videos').keepSynced(true);
+	this.addComment = function(commentID, slangID, uid, username, comment, getDatetime){
+		return firebase.database().ref('s-slango-comments/' + commentID).set({
+		 	commentID: commentID,
+		    slangID: slangID,
+		    user_id: uid,
+		    username: username,
+		    comment: comment,
+		    time_date : getDatetime
+		  });
+	}
+    this.getSlangs = function() {
+  	  
+       return firebase.database().ref('/s-slango');
+    };
+	this.getSlangComments = function() {
+  	  
+       return firebase.database().ref('/s-slango-comments');
     };
 
-  //var presenceRef = firebase.database().ref("disconnectmessage");
-	// Write a string when this client loses connection
- //presenceRef.onDisconnect().set("I disconnected! for real really");
-
- /*var connectedRef = firebase.database().ref(".info/connected");
-connectedRef.on("value", function(snap) {
-  if (snap.val() === true) {
-    alert("connected");
-  } else {
-    alert("not connected");
-  }
-});*/
 });

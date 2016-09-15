@@ -14,8 +14,11 @@
  <div class="container">
   <div class="row">
     <div class="col-md-3" ng-repeat="slang in slang.slangs">
+    <md-card>
       <h1 class="capitalize"><a ui-sref="slang({sid: slang.slangID, title: (slang.slang | removeSpaces)})">{{slang.slang}}</a></h1>
       <p>{{slang.slangDefine | limitTo:50 }}..</p>
+      
+      </md-card>
     </div>
   </div>
  </div>

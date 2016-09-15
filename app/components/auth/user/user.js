@@ -21,21 +21,26 @@ angular.module('slangoApp')
     vm.auth = authService.isLoggedIn();
      var storageRef = firebase.storage().ref();
     
-  firebaseService.getUser(vm.uid).then( function(snapshot){
-  	console.log(snapshot.val());
+  /*firebaseService.getUser(vm.uid).then( function(snapshot){
      vm.username = snapshot.val().username;
      vm.userUrlImg = snapshot.val().profile_picture;
      vm.country  = snapshot.val().country;
      vm.signupdate = snapshot.val().sign_date;
      $scope.$apply();
-  }).catch(function(error){
+  });*/
+  /*.catch(function(error){
      $location.path('/');
-  });
-		  
+  });*/
+	firebaseService.getUser(vm.uid).on('value', function(snapshot) {
+	   	vm.username = snapshot.val().username;
+	    vm.userUrlImg = snapshot.val().profile_picture;
+	    vm.country  = snapshot.val().country;
+	    vm.signupdate = snapshot.val().sign_date;
+	 });	  
   
     vm.auth.$onAuthStateChanged(function(user) {
       $scope.slangoUser = user;
-     if (currentAuth && vm.uid === $scope.slangoUser.uid) {
+     if (currentAuth && (vm.uid === $scope.slangoUser.uid)) {
      	$scope.slangoUserIS = true;
      $scope.testImage = function(url, timeoutT) {
         return new Promise(function(resolve, reject) {
