@@ -44,7 +44,7 @@ if ('serviceWorker' in navigator) {
               // At this point, everything has been precached.
               // It's the perfect time to display a "Content is cached for offline use." message.
               console.log('Content is now available offline!');
-              ntstatus = "Gotube App Can Work offline!";
+              ntstatus = "Slango App Can Work offline!";
             }
             break;
 

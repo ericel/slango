@@ -738,7 +738,18 @@ ul.col-comments {
 .col-comments .timeadded {
 
 }
-
+.v-box {
+  border: 1px solid #ccd;
+}
+.v-box span {
+  border: 1px dashed #ccd;
+  padding:10px;
+  border-radius: 100%;
+  font-size: 1.5em;
+}
+.success {
+  color: #0097a7;
+}
 /*End Slang Css */
 /* Account Css */
 .col-user {

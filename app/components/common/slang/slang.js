@@ -111,7 +111,26 @@ vm.hideSuccess = false;
 
       };  
  });
-  
+  $scope.upVote = function(){
+    if(currentAuth){
+      vm.upvotes = vm.likesSlang + 1;
+      firebaseService.upVote(vm.sid, vm.upvotes).then(function(){
+        $scope.success = "Thanks for voting! Vote as many times as you want.";
+      });
+    } else {
+      $scope.alert = "You Need To Login To Vote!";
+    }
+    
+  };
+  $scope.upDown = function(){
+    if(currentAuth){
+     vm.downvotes = vm.dislikesSlang + 1;
+     firebaseService.downVote(vm.sid, vm.downvotes).then(function(){
+        $scope.success = "Thanks for voting! Vote as many times as you want.";
+      });
+    } else {
+      $scope.alert = "You Need To Login To Vote!";
+    }
 
-
-  });
+  };
+});

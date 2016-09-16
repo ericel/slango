@@ -53,26 +53,6 @@ angular.module('slangoApp')
   	$scope.showSimpleToast(ntstatus); 
   }, 5000);
  }
- // TODO : Give A Service Worker Refresh For New Content
- /* $scope.showActionToast = function() {
-    var pinTo = $scope.getToastPosition();
-    var toast = $mdToast.simple()
-      .textContent('Marked as read')
-      .action('UNDO')
-      .highlightAction(true)
-      .highlightClass('md-accent')// Accent is used by default, this just demonstrates the usage.
-      .position(pinTo);
 
-    $mdToast.show(toast).then(function(response) {
-      if ( response == 'ok' ) {
-        alert('You clicked the \'UNDO\' action.');
-      }
-    });
-  };*/
-  $scope.$watch('online', function(newStatus) {
-  	console.log('you are Online');
-   });
-  $scope.$watch('offline', function(newStatus) {
-  	console.log('you are offline');
-   });
+
   });

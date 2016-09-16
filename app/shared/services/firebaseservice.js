@@ -68,5 +68,15 @@ angular.module('slangoApp')
   	  
        return firebase.database().ref('/s-slango-comments');
     };
-
+    
+    this.upVote = function(slangID, votes){
+		return firebase.database().ref('s-slango/' + slangID).update({
+		    file_likes: votes
+		  });
+	}
+	this.downVote = function(slangID, votes){
+		return firebase.database().ref('s-slango/' + slangID).update({
+		    file_dislikes: votes
+		  });
+	}
 });

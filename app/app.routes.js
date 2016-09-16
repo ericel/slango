@@ -16,7 +16,7 @@ angular.module('slangoApp')
     // no route goes to index
     $urlRouterProvider.when('', '/');
     // use a state provider for routing
-    $locationProvider.hashPrefix('!')
+    $locationProvider.hashPrefix('!');
 
     $stateProvider
         .state('home', {

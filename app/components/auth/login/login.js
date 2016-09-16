@@ -18,13 +18,12 @@ angular.module('slangoApp')
      } 
   	 $scope.login = function() {
       $scope.error = null;
-      //$scope.loginemail
-      //$scope.loginpassword
+
       authService.login($scope.loginemail, $scope.loginpassword)
       .then(function(authData) {
-        //$scope.authData = userAuth.getUserData();
+ 
         $location.path('/');
-        ///console.log($scope.authData);
+    
       }).catch(function(error) {
         $scope.error = error.message;
       });
