@@ -23,6 +23,7 @@ angular
     'firebase',
     'ngMd5',
     'indexedDB',
+    'angular.filter',
     'offline'
   ])
    .factory("Auth", ["$firebaseAuth",

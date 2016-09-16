@@ -8,21 +8,37 @@
  * Controller of the slangoApp
  */
 angular.module('slangoApp')
-  .controller('HomeCtrl', function ($scope,  $sce, $timeout, firebaseService, currentAuth, indexDBService) {
+  .controller('HomeCtrl', function ($scope, $sce, $timeout, firebaseService, currentAuth, indexDBService) {
     var vm = this;
       $scope.$parent.seo = {
         pageTitle : 'World of slangs',
         pageDescripton: 'World Slangs Database'
     };
-   if (navigator.onLine) {
+  if (navigator.onLine) {
+    var addToSlangs = [];
     firebaseService.getSlangs().on('value', function(response) {
-      vm.slangs = response.val();
+     // vm.slangs = response.val();
+      var userSlangs = response.val();
+        for (var key in userSlangs) {
+        if (userSlangs.hasOwnProperty(key)) {
+           var slang = {"slang": userSlangs[key].slang, "slangDefine": userSlangs[key].slangDefine, "slangExample": userSlangs[key].slangExample, "user_id": userSlangs[key].user_id, "time_date": userSlangs[key].time_date, "file_dislikes": userSlangs[key].file_dislikes, "file_likes": userSlangs[key].file_likes, "slangID": userSlangs[key].slangID}
+        addToSlangs.push(slang);
+        }
+      }
+      vm.slangs = addToSlangs;
+      
      });
   } else {
     indexDBService.getVobj().then(function(vObj){
       vm.slangs = vObj;
+      
     });
   }
+   $scope.criteriaMatch = function( letter) {
+      return function( item ) {
+       return item.slang.startsWith(letter);
+       };
+    };
   })
   .filter('removeSpaces', [function() {
     return function(string) {

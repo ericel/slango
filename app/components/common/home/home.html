@@ -4,7 +4,7 @@
   <div class=" container">
   <div class="row">
 	<h1>Language Slangs!</h1>
-	<p>What The Fuck?</p>
+	<h2>Define a word! it will take you just a minute!</h2>
 	<p>Add your own word to the slango wiki. It maybe considered a real word someday!</p>
 	</div>
  </div>
@@ -12,13 +12,64 @@
  </div>
 
  <div class="container">
-  <div class="row">
-    <div class="col-md-3" ng-repeat="slang in slang.slangs">
-    <md-card>
-      <h1 class="capitalize"><a ui-sref="slang({sid: slang.slangID, title: (slang.slang | removeSpaces)})">{{slang.slang}}</a></h1>
+  <div class="row home">
+    <div class="col-md-3">
+     <h2>Slangs A</h2>
+     <div  ng-repeat="slang in slang.slangs | filter:criteriaMatch('a') | limitTo: 5">
+      <h1 class="capitalize home-title"><a ui-sref="slang({sid: slang.slangID, title: (slang.slang | removeSpaces)})">{{slang.slang}}</a></h1>
       <p>{{slang.slangDefine | limitTo:50 }}..</p>
-      
-      </md-card>
+    </div>
+    </div>
+    <div class="col-md-3">
+    <h2>Slangs B</h2>
+    <div  ng-repeat="slang in slang.slangs | filter:criteriaMatch('b') | limitTo: 5">
+      <h1 class="capitalize home-title"><a ui-sref="slang({sid: slang.slangID, title: (slang.slang | removeSpaces)})">{{slang.slang}}</a></h1>
+      <p>{{slang.slangDefine | limitTo:50 }}..</p>
+    </div>
+    </div>
+    <div class="col-md-3">
+    <h2>Slangs C</h2>
+    <div  ng-repeat="slang in slang.slangs | filter:criteriaMatch('c') | limitTo: 5">
+      <h1 class="capitalize home-title"><a ui-sref="slang({sid: slang.slangID, title: (slang.slang | removeSpaces)})">{{slang.slang}}</a></h1>
+      <p>{{slang.slangDefine | limitTo:50 }}..</p>
+    </div>
+    </div>
+    <div class="col-md-3">
+    <h2>Slangs D</h2>
+    <div  ng-repeat="slang in slang.slangs | filter:criteriaMatch('d') | limitTo: 5">
+      <h1 class="capitalize home-title"><a ui-sref="slang({sid: slang.slangID, title: (slang.slang | removeSpaces)})">{{slang.slang}}</a></h1>
+      <p>{{slang.slangDefine | limitTo:50 }}..</p>
+    </div>
+    </div>
+  </div>
+   <div class="row">
+    <div class="col-md-3">
+     <h2>Slangs E</h2>
+     <div  ng-repeat="slang in slang.slangs | filter:criteriaMatch('e') | limitTo: 5">
+      <h1 class="capitalize home-title"><a ui-sref="slang({sid: slang.slangID, title: (slang.slang | removeSpaces)})">{{slang.slang}}</a></h1>
+      <p>{{slang.slangDefine | limitTo:50 }}..</p>
+    </div>
+    </div>
+    <div class="col-md-3">
+    <h2>Slangs F</h2>
+    <div  ng-repeat="slang in slang.slangs | filter:criteriaMatch('f') | limitTo: 5">
+      <h1 class="capitalize home-title"><a ui-sref="slang({sid: slang.slangID, title: (slang.slang | removeSpaces)})">{{slang.slang}}</a></h1>
+      <p>{{slang.slangDefine | limitTo:50 }}..</p>
+    </div>
+    </div>
+    <div class="col-md-3">
+    <h2>Slangs G</h2>
+    <div  ng-repeat="slang in slang.slangs | filter:criteriaMatch('g') | limitTo: 5">
+      <h1 class="capitalize home-title"><a ui-sref="slang({sid: slang.slangID, title: (slang.slang | removeSpaces)})">{{slang.slang}}</a></h1>
+      <p>{{slang.slangDefine | limitTo:50 }}..</p>
+    </div>
+    </div>
+    <div class="col-md-3">
+    <h2>Slangs H</h2>
+    <div  ng-repeat="slang in slang.slangs | filter:criteriaMatch('h') | limitTo: 5">
+      <h1 class="capitalize home-title"><a ui-sref="slang({sid: slang.slangID, title: (slang.slang | removeSpaces)})">{{slang.slang}}</a></h1>
+      <p>{{slang.slangDefine | limitTo:50 }}..</p>
+    </div>
     </div>
   </div>
  </div>

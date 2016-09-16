@@ -24,15 +24,27 @@ angular.module('slangoApp')
 	    	$scope.error = "Make sure you fill all form fields!";
 	    	return;
 	    }
-      vm.getDatetime = new Date().toJSON();
-      vm.slangID = md5.createHash('hello'+vm.getDatetime+$scope.slangoUser);
-	    firebaseService.addSlang(vm.slangID, $scope.slango, $scope.defineSlang, $scope.exSentences, $scope.slangoUser.uid, vm.getDatetime).then(function(){
-        $scope.hideForm = true;
+       var unique = true;
+      firebaseService.getSlangs().on('value', function(response) {
+         vm.slangs = response.val();
+           
+          for (var keys in vm.slangs) {
+              var getThisObject = vm.slangs[keys];
+              if (getThisObject.slang.toLowerCase() === $scope.slango.toLowerCase()) {
+                  $scope.error = "There is a slang with that name!";
+                  unique = false;
+                  break;
+              }
+          }
+        if (unique) {
+          vm.getDatetime = new Date().toJSON();
+          vm.slangID = md5.createHash('hello'+vm.getDatetime+$scope.slangoUser);
+          firebaseService.addSlang(vm.slangID, $scope.slango, $scope.defineSlang, $scope.exSentences, $scope.slangoUser.uid, vm.getDatetime).then(function(){
+          $scope.hideForm = true;
+           });
+        }
       });
-	    
-    }
-	});
-    if("4b06dd79390c86312fcb73b81b29bf70" === "4b06dd79390c86312fcb73b81b29bf70"){
-      console.log('true');
+     
     }
   });
+});

@@ -28,7 +28,6 @@ angular.module('slangoApp')
             firebaseService.getUser(vm.uid).on('value', function(snapshot) {
             vm.username = snapshot.val().username;
             vm.userUrlImg = snapshot.val().profile_picture;
-            $scope.$apply();
            });
         });
     } else {
@@ -48,12 +47,11 @@ angular.module('slangoApp')
         firebaseService.getUser(vm.uid).on('value', function(snapshot) {
          vm.username = snapshot.val().username;
          vm.userUrlImg = snapshot.val().profile_picture;
-         $scope.$apply();
       });
  
   });
  }
-
+vm.comments ='';
 $scope.loadComments = function(){
   if (navigator.onLine) {
     firebaseService.getSlangComments().on('value', function(response) {
@@ -77,6 +75,7 @@ $scope.loadComments = function(){
     });
   }
 }
+
 $scope.loadComments();
 
 
@@ -100,9 +99,7 @@ vm.hideSuccess = false;
               
             // Reset the form model.
             $scope.comment = '';
-            // Set back to pristine.
             $scope.form.$setPristine();
-            // Since Angular 1.3, set back to untouched state.
             $scope.form.$setUntouched();
             vm.hideSuccess = true;
             vm.message = "Comment Added Successfully!";

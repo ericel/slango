@@ -39,6 +39,7 @@ module.exports = function(config) {
       'bower_components/angular-material-icons/angular-material-icons.min.js',
       'bower_components/angular-indexedDB/angular-indexed-db.js',
       'bower_components/angular-offline/angular-offline.js',
+      'bower_components/angular-filter/dist/angular-filter.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

@@ -48,26 +48,16 @@
     </div>
  </div>
  <div class="container col-re">
- <h2>User Comments {{slang.getDatetime | date:'dd-MMM-yy HH:mm'}}</h2>
+ <h2>User Comments:</h2>
  <ul class="col-comments">
-
     <li ng-repeat="comment in slang.comments | orderBy: '-time_date'">
-       <div>
-         
         <div class="capitalize">
           Added By <a ui-sref="user({uid: comment.user_id, user: comment.username})">{{comment.username}}</a>
          </div>
-       </div>
-       <div>
-
-       <div>
-       dddd
-       </div>
         <div class="small">{{comment.time_date |  date:'dd-MMM-yy HH:mm'}}</div>
          {{comment.comment}}
-       </div>
     </li>
-  
+    <li ng-show="!slang.comments.length">No comments Yet!</li>
     </ul>
  </div>
  </main>

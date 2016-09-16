@@ -8,7 +8,7 @@
  * Service in the slangoApp.
  */
 angular.module('slangoApp')
-  .service('firebaseService', function ($http, offline) {
+  .service('firebaseService', function ($http, offline, $firebase) {
     
 	 this.writeUserData = function(userId, name, email, imageUrl, country, getDatetime) {
 
