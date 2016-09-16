@@ -12,7 +12,7 @@ angular.module('slangoApp')
   	var vm = this;
     vm.user = $stateParams.user;
     vm.uid = $stateParams.uid;
-
+     vm.determinateValue = 1;
   	$scope.$parent.seo = {
         pageTitle : vm.user + ' ' + 'User account',
         pageDescripton: 'slango user account'
@@ -21,16 +21,7 @@ angular.module('slangoApp')
     vm.auth = authService.isLoggedIn();
      var storageRef = firebase.storage().ref();
     
-  /*firebaseService.getUser(vm.uid).then( function(snapshot){
-     vm.username = snapshot.val().username;
-     vm.userUrlImg = snapshot.val().profile_picture;
-     vm.country  = snapshot.val().country;
-     vm.signupdate = snapshot.val().sign_date;
-     $scope.$apply();
-  });*/
-  /*.catch(function(error){
-     $location.path('/');
-  });*/
+    
 	firebaseService.getUser(vm.uid).on('value', function(snapshot) {
 	   	vm.username = snapshot.val().username;
 	    vm.userUrlImg = snapshot.val().profile_picture;

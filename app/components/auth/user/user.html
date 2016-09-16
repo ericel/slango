@@ -5,12 +5,12 @@
 	      <div class="text-center">
 	        <h1 class="capitalize">{{slang.user}}</h1>
 	        <h3>{{slang.country}}</h3>
-	        <small>Since: {{slang.signupdate | date}}</small>
+	        <small>Since: {{slang.signupdate | date:'dd-MMM-yy'}}</small>
 	        <div class="user-pic">
                <img  class="user-avatar-user  md-raised md-primary" ng-src="{{slang.userUrlImg}}" ng-model="userUrlImg" alt="{{slang.user}}"><ng-md-icon ng-show="slangoUserIS" ng-click="showme=true" icon="local_see" style="fill: #ccd" size="60"></ng-md-icon>
 	        </div>
 
-	       <button ng-show="showme" class="btn btn-warning pull-right hidebtn" ng-click="showme=false">X</button>
+	       <md-button class="md-raised md-primary pull-right" ng-show="showme"  ng-click="showme=false">X</md-button>
 
         <!-- Container for the demo -->
         <md-card class="mak-pic" ng-show="showme">
@@ -40,6 +40,6 @@
 	 <div class="clearfix"></div>
 </div>
 <div class="container">
-<md-subheader class="md-no-sticky">User's Videos</md-subheader>
+<md-subheader class="md-no-sticky"></md-subheader>
 </div>
 </main>
