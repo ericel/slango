@@ -28,7 +28,7 @@
 		  </md-card>
 		  <md-card>
 		   <md-input-container>
-		        <label for="password">Password:</label>
+		        <label for="upassword">Password:</label>
 		        <input type="password" name="upassword" id="upassword"  ng-model="upassword" required="">
 		        <div ng-show="form.$submitted || form.upassword.$touched">
 		          <span ng-show="form.upassword.$error.required">Enter your password.</span>
@@ -37,7 +37,7 @@
 		  </md-card>
 		  <md-card>
 		  	 <md-input-container>
-		        <label for="password1">Confirm Password:</label>
+		        <label for="upassword1">Confirm Password:</label>
 		        <input type="password" name="upassword1" id="upassword1"  ng-model="upassword1" required="" pw-check="upassword">
 		        <div ng-show="form.$submitted || form.upassword1.$touched">
 		          <span ng-show="form.upassword1.$error.required">Confirm your password.</span>

@@ -81,6 +81,12 @@ body {
 .marketing p + h4 {
   margin-top: 28px;
 }
+label {
+  color:#106161;
+}
+md-input-container label{
+  color:#106161;
+}
 a {
   color:#106161;
   text-decoration: none;
