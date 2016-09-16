@@ -82,11 +82,14 @@ body {
   margin-top: 28px;
 }
 a {
-  color:#0097a7;
+  color:#106161;
   text-decoration: none;
 }
 a:hover{
   text-decoration: none;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #106161;
 }
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
@@ -128,7 +131,9 @@ img.user-avatar{
   z-index: 9999;
   height: auto;
   }
-
+md-sidenav md-list a {
+  color:#106161;
+}
 .md-toolbar-tools {
   position: absolute;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.19);
@@ -221,6 +226,11 @@ md-sidenav md-toolbar {
   margin: 0 !important;
   min-height: 30px !important;
   line-height: 0;
+}
+.search label {
+  display: inline;
+  margin: 0;
+  padding:0;
 }
 .navbar-brand img{
   padding-top: none;
@@ -366,6 +376,12 @@ md-card {
 }
 .home .col-md-3 div{
   border-bottom: 1px solid #ccd;
+}
+.home h2{
+  color: #0097a7;
+  background: #000000;
+  text-align: center;
+  border-radius: 4px;
 }
 .listing-cr input {
   display: block;

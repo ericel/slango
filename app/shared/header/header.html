@@ -29,10 +29,11 @@
             </ul>-->
          <div class="search">
          <form name="searchForm">
-          <input type="text" class="form-control input-sm" name="searchstring" ng-model="searchstring" minlength="3" maxlength="64" minlength="3" placeholder="Search" required="" value="">
+         <label for="searchstring"  aria-label="Search"> </label>
+          <input type="text" class="form-control input-sm" name="searchstring" id="searchstring" ng-model="searchstring" minlength="3" maxlength="64" minlength="3" placeholder="Search" required="" value="">
            <div ng-show="searchForm.$submitted || searchForm.searchstring.$touched">
-            <span class="error" ng-show="searchForm.searchstring.$error.required">
-             Required!</span>
+            <!--<span class="error" ng-show="searchForm.searchstring.$error.required">
+             Required!</span>-->
           </div>
           <span class="error">{{error}}</span>
            <md-button type="submit" class="btn md-raised md-primary" ng-click="searchSlango(searchstring)">Search</md-button>
@@ -92,7 +93,7 @@
         
         <md-list-item  class="md-3-line text-center">
          <div class="md-list-item-text" layout="column">
-          <a class="btn btn-success" ui-sref="add">Add a slang</a>
+          <a class="md-raised md-primary" ui-sref="add">Add a slang</a>
           </div>
         </md-list-item>
         <md-divider ></md-divider>
@@ -102,13 +103,15 @@
           </div>
         </md-list-item>
         </div>
+        </md-list>
+        <md-list flex>
         <div ng-hide="slangoUser">
         <md-list-item class="md-3-line">
           <div class="md-list-item-text" layout="column">
-            <h3><a ui-sref="login">Login</a></h3>
+           <a ui-sref="login">Login</a>
           </div>
           <div class="md-list-item-text" layout="column">
-            <h3><a ui-sref="signup">Sign Up</a></h3>
+            <a ui-sref="signup">Sign Up</a>
           </div>
         </md-list-item>
         </div>
@@ -122,7 +125,7 @@
             <h3><a ui-sref="contact">Contact Us</a></h3>
           </div>
           <div class="md-list-item-text" layout="column">
-            <h3><a ui-sref="about">About Us</a></h3>
+            <h3><a ui-sref="about">About</a></h3>
           </div>
         </md-list-item>
 

@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name slangoApp.controller:SearchCtrl
+ * @name slangoApp.controller:TermsCtrl
  * @description
- * # SearchCtrl
+ * # TermsCtrl
  * Controller of the slangoApp
  */
 angular.module('slangoApp')
-  .controller('SearchCtrl', function () {
+  .controller('TermsCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

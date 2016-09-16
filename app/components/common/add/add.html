@@ -35,7 +35,8 @@
 		    
 		  </md-card>
 		<md-card>
-			<div class="error">{{error}}</div>   
+			<div class="error">{{error}}</div>
+			<div ng-show="pleasewait" class="alert alert-success">please wait ...</div>  
 		    <md-button type="submit" class="md-raised md-primary" ng-disabled="form.$invalid" ng-click="addSlango()">Add to Slango</md-button>
 	   </md-card>
 		    </form> 

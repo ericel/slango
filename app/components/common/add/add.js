@@ -18,13 +18,15 @@ angular.module('slangoApp')
     $scope.hideForm = false;
     vm.auth.$onAuthStateChanged(function(user) {
     $scope.slangoUser = user;
-    
+    $scope.error = '';
+    $scope.pleasewait = false;
     $scope.addSlango = function(){
 	    if($scope.form.$invalid){
 	    	$scope.error = "Make sure you fill all form fields!";
 	    	return;
 	    }
        var unique = true;
+       $scope.pleasewait = true;
       firebaseService.getSlangs().on('value', function(response) {
          vm.slangs = response.val();
            
@@ -32,11 +34,15 @@ angular.module('slangoApp')
               var getThisObject = vm.slangs[keys];
               if (getThisObject.slang.toLowerCase() === $scope.slango.toLowerCase()) {
                   $scope.error = "There is a slang with that name!";
+                  $scope.pleasewait = false;
                   unique = false;
                   break;
               }
           }
+         
         if (unique) {
+           $scope.error = " ";
+          $scope.pleasewait = true;
           vm.getDatetime = new Date().toJSON();
           vm.slangID = md5.createHash('hello'+vm.getDatetime+$scope.slangoUser);
           firebaseService.addSlang(vm.slangID, $scope.slango, $scope.defineSlang, $scope.exSentences, $scope.slangoUser.uid, vm.getDatetime).then(function(){

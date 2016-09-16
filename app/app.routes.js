@@ -37,22 +37,46 @@ angular.module('slangoApp')
             url: '/about',
             templateUrl: 'components/common/about/about.html',
             controller: 'AboutCtrl as slang',
+            resolve: {
+            "currentAuth": ["Auth", function(Auth) {
+              return Auth.$waitForSignIn();
+            }]
+          }
+        })
+        .state('contact', {
+            url: '/contact',
+            templateUrl: 'components/common/contact/contact.html',
+            controller: 'ContactCtrl as slang',
+            resolve: {
+            "currentAuth": ["Auth", function(Auth) {
+              return Auth.$waitForSignIn();
+            }]
+          }
+        })
+         .state('terms', {
+            url: '/terms',
+            templateUrl: 'components/common/terms/terms.html',
+            controller: 'TermsCtrl as slang',
+            resolve: {
+            "currentAuth": ["Auth", function(Auth) {
+              return Auth.$waitForSignIn();
+            }]
+          }
         })
         .state('search', {
             url: '/search/:search',
             templateUrl: 'components/common/search/search.html',
             controller: 'SearchCtrl as slang',
+            resolve: {
+            "currentAuth": ["Auth", function(Auth) {
+              return Auth.$waitForSignIn();
+            }]
+          }
         })
         .state('signup', {
         url: '/signup',
         templateUrl: 'components/auth/signup/signup.html',
         controller: 'SignupCtrl as slang',
-        resolve: {
-        "currentAuth": ["Auth", function(Auth) {
-          return Auth.$waitForSignIn();
-        }]
-      }
-      ,
         resolve: {
         "currentAuth": ["Auth", function(Auth) {
           return Auth.$waitForSignIn();
