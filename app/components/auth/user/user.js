@@ -19,6 +19,7 @@ angular.module('slangoApp')
     };
     
     vm.auth = authService.isLoggedIn();
+   console.log(vm.auth);
      var storageRef = firebase.storage().ref();
     
     

@@ -103,6 +103,16 @@ angular.module('slangoApp')
         }]
       }
       })
+      .state('forgotpass', {
+        url: '/forgotpass',
+        templateUrl: 'components/auth/forgotpass/forgotpass.html',
+        controller: 'ForgotpassCtrl as slang',
+        resolve: {
+        "currentAuth": ["Auth", function(Auth) {
+          return Auth.$waitForSignIn();
+        }]
+      }
+      })
       .state('add', {
         url: '/add',
         templateUrl: 'components/common/add/add.html',

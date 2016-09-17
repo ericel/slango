@@ -33,10 +33,8 @@ angular.module('slangoApp')
 	this.getUser = function(uid){
 	 return firebase.database().ref('/sl-users/'+uid);
 	}
-
-	/*this.getVideo = function(vid){
-	 return firebase.database().ref('/user-videos/' +uid).once('value');
-	}*/
+    
+   
 
 	this.addSlang = function(sID, slang, slangDefine, slangExample, uid, getDatetime){
 		return firebase.database().ref('s-slango/' + sID).set({
@@ -79,4 +77,6 @@ angular.module('slangoApp')
 		    file_dislikes: votes
 		  });
 	}
+
+
 });
