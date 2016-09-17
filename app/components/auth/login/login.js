@@ -17,7 +17,10 @@ angular.module('slangoApp')
       $location.path('/');
      } 
   	 $scope.login = function() {
-      $scope.error = null;
+      if($scope.form.$invalid){
+        $scope.error = "Make sure you fill all form fields!";
+        return;
+      }
 
       authService.login($scope.loginemail, $scope.loginpassword)
       .then(function(authData) {

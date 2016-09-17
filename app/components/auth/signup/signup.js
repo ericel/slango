@@ -26,20 +26,26 @@ angular.module('slangoApp')
         vm.zip = vm.location.address_01[5].long_name;
        
   
-        $scope.form = {};
-        $scope.form.country = vm.country;
+        $scope.signupform = {};
+        $scope.signupform.country = vm.country;
        
     }); // geolocation
     
-   
+    $scope.pleasewait = false;
     vm.getDatetime = new Date().toJSON();
-    
     vm.auth = authService.isLoggedIn();
     $scope.createUser = function() {
-       if (typeof $scope.form.country === 'undefined'){
-         $scope.form.country = "location was denied!";
+      if($scope.uemail == null || $scope.username == null || $scope.upassword == null || $scope.upassword1 == null){
+        $scope.error = "Make sure you fill all the form fields!";
+        return;
+       }
+       $scope.pleasewait = true;
+
+       if (typeof $scope.signupform.country === 'undefined'){
+         $scope.signupform.country = "location was denied!";
         }
-      vm.country = $scope.form.country;
+
+      vm.country = $scope.signupform.country;
       $scope.message = null;
       $scope.error = null;
       var userName = $scope.username;
@@ -49,12 +55,14 @@ angular.module('slangoApp')
       $scope.hideForm = false;
       vm.determinateValue = 3000;
      if(!angular.equals(password, $scope.upassword1)){
+         $scope.pleasewait = false;
+         $scope.error = "Passwords Don't Match!";
         return;
      }
 
-      // Create a new username, email, imageUrl
       authService.createUser(email, password)
 	    .then(function(user){
+          $scope.pleasewait = true;
           $scope.hideForm = true;
           $scope.message = "User id: " + user.uid;
           vm.uid = user.uid;
@@ -82,8 +90,8 @@ angular.module('slangoApp')
 	     }, 3000);
         })
        .catch(function(error) {
+          $scope.pleasewait = false;
           $scope.error = error.message;
-          console.log($scope.error.message);
         });
 
 

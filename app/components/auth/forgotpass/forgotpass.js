@@ -16,7 +16,7 @@ angular.module('slangoApp')
     $scope.pleasewait = false;
     $scope.hideform = false;
     $scope.forgotPass = function(){
-      if($scope.form.$invalid){
+      if($scope.forgotform.$invalid){
 	    	$scope.error = "Make sure you enter your account email!";
 	    	return;
 	   }

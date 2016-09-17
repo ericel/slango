@@ -3,15 +3,15 @@
     <div class="main-bg-overlay">
 		<div class="container main-bg-overlay-content">
 		<div ng-hide="hideForm" class="listing-cr">
-		  <form name="form"  novalidate >
+		  <form name="signupform"  novalidate >
 		   <div class="text-center"><ng-md-icon icon="account_child" style="fill:#abcdef" size="60"></ng-md-icon></div>
 		   <h1>Sign up for a Gotube Account</h1>
 		   <md-card>
 			   <md-input-container>
 		       <label for="username">Username:</label>
 		        <input  type="text"  ng-model="username" id="username" name="username" md-autofocus required=""  ng-trim="false" ng-change="username = username.split(' ').join('')">
-		         <div ng-show="form.$submitted || form.username.$touched">
-		          <span ng-show="form.username.$error.required">Enter Username.</span>
+		         <div ng-show="signupform.$submitted || signupform.username.$touched">
+		          <span ng-show="signupform.username.$error.required">Enter Username.</span>
 		        </div>
 			  </md-input-container>
 		   </md-card>
@@ -20,9 +20,9 @@
 		    <md-input-container>
 		       <label for="uemail">Email Address:</label>
 		        <input type="email"  ng-model="uemail" id="uemail" name="uemail" md-autofocus required="">
-		         <div ng-show="form.$submitted || form.uemail.$touched">
-		          <span ng-show="form.uemail.$error.required">Enter your email.</span>
-		          <span class="error" ng-show="form.uemail.$error.email">This is not a valid email.</span>
+		         <div ng-show="signupform.$submitted || signupform.uemail.$touched">
+		          <span ng-show="signupform.uemail.$error.required">Enter your email.</span>
+		          <span class="error" ng-show="signupform.uemail.$error.email">This is not a valid email.</span>
 		        </div>
 		    </md-input-container>
 		  </md-card>
@@ -30,8 +30,8 @@
 		   <md-input-container>
 		        <label for="upassword">Password:</label>
 		        <input type="password" name="upassword" id="upassword"  ng-model="upassword" required="">
-		        <div ng-show="form.$submitted || form.upassword.$touched">
-		          <span ng-show="form.upassword.$error.required">Enter your password.</span>
+		        <div ng-show="signupform.$submitted || signupform.upassword.$touched">
+		          <span ng-show="signupform.upassword.$error.required">Enter your password.</span>
 		        </div>
 		    </md-input-container>
 		  </md-card>
@@ -39,17 +39,19 @@
 		  	 <md-input-container>
 		        <label for="upassword1">Confirm Password:</label>
 		        <input type="password" name="upassword1" id="upassword1"  ng-model="upassword1" required="" pw-check="upassword">
-		        <div ng-show="form.$submitted || form.upassword1.$touched">
-		          <span ng-show="form.upassword1.$error.required">Confirm your password.</span>
-		          <span class="error" ng-show="form.upassword1.$error.pwmatch">Passwords don't match.</span> 
+		        <div ng-show="signupform.$submitted || signupform.upassword1.$touched">
+		          <span ng-show="signupform.upassword1.$error.required">Confirm your password.</span>
+		          <span class="error" ng-show="signupform.upassword1.$error.pwmatch">Passwords don't match.</span> 
 		        </div>
 
 		    </md-input-container>
 		  </md-card>
 		  <md-card>
-		  
+		     <div ng-show="pleasewait" class="text-center">
+               <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+             </div>
 		     <div class="error">{{error}}</div>   
-	    <md-button type="submit" class="md-raised md-primary" ng-disabled="form.$invalid" ng-click="createUser()">Sign Up</md-button>
+	    <md-button type="submit" class="md-raised md-primary" ng-disabled="signupform.$invalid" ng-click="createUser()">Sign Up</md-button>
 	    
 	    <h3>
 	      Have an account? <a ui-sref="login"> Log In</a>

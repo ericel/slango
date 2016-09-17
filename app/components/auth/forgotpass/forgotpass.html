@@ -3,7 +3,7 @@
     <div class="main-bg-overlay">
 		<div class="container main-bg-overlay-content">
 		<div ng-hide="hideForm" class="listing-cr">
-		  <form name="form"  novalidate >
+		  <form name="forgotform"  novalidate >
 		   
 		   <h1>Step 1: Enter Your Slango Account Email</h1>
 		  
@@ -12,9 +12,9 @@
 		    <md-input-container>
 		       <label for="uemail">Email Address:</label>
 		        <input type="email"  ng-model="uemail" id="uemail" name="uemail" md-autofocus required="">
-		         <div ng-show="form.$submitted || form.uemail.$touched">
-		          <span ng-show="form.uemail.$error.required">Enter your email.</span>
-		          <span class="error" ng-show="form.uemail.$error.email">This is not a valid email.</span>
+		         <div ng-show="forgotform.$submitted || forgotform.uemail.$touched">
+		          <span ng-show="forgotform.uemail.$error.required">Enter your email.</span>
+		          <span class="error" ng-show="forgotform.uemail.$error.email">This is not a valid email.</span>
 		        </div>
 		    </md-input-container>
 		  </md-card>
@@ -24,7 +24,7 @@
                <md-progress-linear md-mode="indeterminate"></md-progress-linear>
              </div>
 		     <div class="error">{{error}}</div>   
-	    <md-button type="submit" class="md-raised md-primary" ng-disabled="form.$invalid" ng-click="forgotPass()">Reset My Slango Password</md-button>
+	    <md-button type="submit" class="md-raised md-primary" ng-disabled="forgotform.$invalid" ng-click="forgotPass()">Reset My Slango Password</md-button>
 	    
 	    <h3>
 	      Have an account? <a ui-sref="login"> Log In</a>
