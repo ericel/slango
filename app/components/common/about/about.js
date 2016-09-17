@@ -9,6 +9,10 @@
  */
 angular.module('slangoApp')
   .controller('AboutCtrl', function () {
+  	$scope.$parent.seo = {
+        pageTitle : 'About us',
+        pageDescripton: 'World\'s Slang Wiki'
+    };
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

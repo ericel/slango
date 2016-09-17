@@ -9,6 +9,10 @@
  */
 angular.module('slangoApp')
   .controller('TermsCtrl', function () {
+  	$scope.$parent.seo = {
+        pageTitle : 'Terms of use',
+        pageDescripton: 'Make Sure you brush befor using slango'
+    };
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

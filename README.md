@@ -1,7 +1,7 @@
 # slango
+## Udacity Senior Web Developer capstone project 5
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.15.1.
+In this capstone project, students will build their own application using signature native application features such as device sensor access, offline-first, and more.
 
 ## Build & development
 

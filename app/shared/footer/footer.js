@@ -51,7 +51,7 @@ angular.module('slangoApp')
   $timeout(function(){
  
   	$scope.showSimpleToast(ntstatus); 
-  }, 5000);
+  }, 15000);
  }
 
 
