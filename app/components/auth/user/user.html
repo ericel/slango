@@ -40,6 +40,13 @@
 	 <div class="clearfix"></div>
 </div>
 <div class="container">
-<md-subheader class="md-no-sticky"></md-subheader>
+  <md-subheader class="md-no-sticky">User Added Slangs ({{slang.userSlangsAdded.length}})</md-subheader>
+   <div class="row">
+     <div class="col-md-3" ng-repeat="slang in slang.userSlangsAdded | orderBy: 'time_date'">
+     	  <h1 class="capitalize home-title"><a ui-sref="slang({sid: slang.slangID, title: (slang.slang | removeSpaces)})">{{slang.slang}}</a></h1>
+      <p>{{slang.slangDefine | limitTo:30 }}..</p>
+     </div>
+     <div ng-show="!slang.userSlangsAdded.length">No Slangs added by user!</div>
+   </div>
 </div>
 </main>

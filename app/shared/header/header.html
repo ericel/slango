@@ -47,12 +47,11 @@
             <li class="fix-top" ng-hide="slangoUser"><a ui-sref="signup">Sign up</a></li>
             
             <li class="user-si" ng-show="slangoUser">
-            <ng-md-icon icon="notifications_none" style="fill: red" size="30"></ng-md-icon> 
             <a ui-sref="user({uid: slangoUser.uid, user: slangoUser.displayName})">
             <img  class="user-avatar md-raised md-primary" ng-src="{{userUrlImg}}"" alt="{{slangoUser.displayName}}">
             </a>
             <ng-md-icon ng-click="toggleRight()"
-            ng-hide="isOpenRight()"  icon="view_headline" style="fill:#A6A6A6" size="40"></ng-md-icon> 
+            ng-hide="isOpenRight()"  icon="dehaze" style="fill:#A6A6A6" size="40"></ng-md-icon> 
           </li>
           </ul>
 
@@ -83,13 +82,6 @@
           </div>
         </md-list-item>
         <md-divider ></md-divider>
-        <md-subheader class="md-no-sticky">Account Updates:</md-subheader>
-         <md-list-item class="md-3-line">
-
-          <div class="md-list-item-text" layout="column">
-             <ng-md-icon icon="notifications_none" style="fill: red" size="30"></ng-md-icon> 
-          </div>
-        </md-list-item>
         
         <md-list-item  class="md-3-line text-center">
          <div class="md-list-item-text" layout="column">

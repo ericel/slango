@@ -20,6 +20,7 @@ body {
   position: relative;
   width:100%;
   margin:0;
+  background: #ffffff;
 }
 .error {color:#F90808;}
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -314,6 +315,33 @@ md-sidenav md-toolbar {
   color: #ccd;
   font-style: italic;
 }
+
+#affiliation {
+    width: auto;
+}
+#affiliation {
+    width: 100%;
+    margin: 50px auto;
+    border: none;
+    border-top: 1px solid #999;
+    text-align: left;
+}
+
+fieldset {
+    display: block;
+    -webkit-margin-start: 2px;
+    -webkit-margin-end: 2px;
+    -webkit-padding-before: 0.35em;
+    -webkit-padding-start: 0.75em;
+    -webkit-padding-end: 0.75em;
+    -webkit-padding-after: 0.625em;
+    min-width: -webkit-min-content;
+    border-width: 2px;
+    border-style: groove;
+    border-color: threedface;
+    border-image: initial;
+}
+
 /* END FOOTER CSS */
 /* Overlay Css */
 .main-bg {
@@ -362,6 +390,17 @@ md-sidenav md-toolbar {
 .main-f {
   min-height: 768px;
 }
+}
+div.book {
+    display: block;
+    width: 100px;
+    height: 100px;
+    background-image: url(/images/design/book.png);
+    margin: 0px auto;
+    background-size: cover;
+}
+.book {
+    background-position: -100px;
 }
 /* End Overlay Css */
 /* Form CSS */
@@ -694,9 +733,10 @@ img.user-avatar-co {
   position: relative;
   right:0;
 }
-li.upload-btn {
-    padding: 10px 5px;
+li.upload-btn .btn {
+    padding: 5px 5px;
     float: left !important;
+    margin-top: 5px;
 }
 /* END Form Css */
 /* Slang Css */
@@ -748,7 +788,11 @@ ul.col-comments {
   font-size: 1.5em;
 }
 .success {
-  color: #0097a7;
+  color: #106161;
+}
+.sl-mark {
+  font-style: italic;
+  color: #106161;
 }
 /*End Slang Css */
 /* Account Css */

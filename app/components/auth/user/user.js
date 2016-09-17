@@ -53,7 +53,7 @@ angular.module('slangoApp')
           img.src = url;
         });
     };
-    if( $scope.slangoUser){
+    if(currentAuth){
      $scope.testImage($scope.slangoUser.photoURL);
     }
     $scope.functionBCompleted = false;
@@ -83,25 +83,6 @@ angular.module('slangoApp')
 
 	        document.getElementById('linkbox').innerHTML = '<a href="' +  url + '">Profile Image available at this link</a>';
 	        vm.userUrlImg = url;
-	        
-	       /*TODO: Delete Other Photos */
-			/*var photoDurl = $scope.firebaseUser.photoURL;
-			var urlTo = snapshot.metadata.downloadURLs[1];
-			var urlToDel = urlTo.split('?')[0].split('%2F')[2];
-			if(photoDurl !== null){
-			
-	        
-	        console.log(url);
-	        console.log(urlToDel);
-			var delRef = storageRef.child('user/'+$scope.firebaseUser.uid+'/'+urlToDel+'');
-			delRef.delete().then(function() {
-			  // File deleted successfully
-			  console.log('deleted');
-			}).catch(function(error) {
-			  // Uh-oh, an error occurred!
-			});
-	        // [END_EXCLUDE]
-	        }*/
 	        firebaseService.updateUserTable($scope.slangoUser.uid, snapshot.metadata.downloadURLs[0]);
 	        $scope.slangoUser.updateProfile({
 	          photoURL: snapshot.metadata.downloadURLs[0]  
@@ -120,6 +101,31 @@ angular.module('slangoApp')
 	});
 	}
 });
+
+vm.userSlangsAdded ='';
+  if (navigator.onLine) {
+    firebaseService.getSlangs().on('value', function(response) {
+      vm.userSlangsAdded = response.val();
+      var result = [];
+      for(var key in vm.userSlangsAdded){
+          if(vm.userSlangsAdded[key].user_id == vm.uid)
+              result.push(vm.userSlangsAdded[key]);
+      }
+       vm.userSlangsAdded = result;
+    });
+  } else {
+    indexDBService.getVobj().then(function(vObjv){
+      vm.userSlangsAdded = vObjv;
+      
+      var filtered =  vm.userSlangsAdded.filter(function(item) {
+        return item.slangID === vm.uid;
+      });
+      vm.userSlangsAdded = filtered;
+  
+    });
+  }
+
+
 
 });
 
