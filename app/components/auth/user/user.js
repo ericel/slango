@@ -117,7 +117,7 @@ vm.userSlangsAdded ='';
     });
   } else {
     indexDBService.getVobj().then(function(vObjv){
-      vm.userSlangsAdded = vObjv;
+      vm.userSlangsAdded = vObj;
       
       var filtered =  vm.userSlangsAdded.filter(function(item) {
         return item.slangID === vm.uid;
