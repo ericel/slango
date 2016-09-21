@@ -103,7 +103,7 @@ angular.module('slangoApp')
 
 vm.userSlangsAdded ='';
 
-  if (navigator.onLine) {
+if (navigator.onLine) {
     firebaseService.getSlangs().on('value', function(response) {
       $scope.loaded = true;
       vm.userSlangsAdded = response.val();
@@ -116,11 +116,11 @@ vm.userSlangsAdded ='';
        
     });
   } else {
-    indexDBService.getVobj().then(function(vObjv){
+    indexDBService.getVobj().then(function(vObj){
       vm.userSlangsAdded = vObj;
       
       var filtered =  vm.userSlangsAdded.filter(function(item) {
-        return item.slangID === vm.uid;
+        return item.user_id === vm.uid;
       });
       vm.userSlangsAdded = filtered;
       $scope.loaded = true;
