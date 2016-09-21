@@ -8,8 +8,9 @@
  * Controller of the slangoApp
  */
 angular.module('slangoApp')
-  .controller('UserCtrl', function ($scope, $stateParams, authService, firebaseService, $interval, currentAuth, $location) {
+  .controller('UserCtrl', function ($scope, $stateParams, indexDBService, authService, firebaseService, $interval, currentAuth, $location) {
   	var vm = this;
+    $scope.loaded = false;
     vm.user = $stateParams.user;
     vm.uid = $stateParams.uid;
      vm.determinateValue = 1;
@@ -19,7 +20,6 @@ angular.module('slangoApp')
     };
     
     vm.auth = authService.isLoggedIn();
-   console.log(vm.auth);
      var storageRef = firebase.storage().ref();
     
     
@@ -76,9 +76,7 @@ angular.module('slangoApp')
 	      // [START oncomplete]
 
 	      storageRef.child('user/'+$scope.slangoUser.uid+'/' + file.name).put(file, metadata).then(function(snapshot) {
-	        //console.log('Uploaded', snapshot.totalBytes, 'bytes.');
 	        vm.determinateValue = snapshot.totalBytes;
-	        //console.log(snapshot.metadata);
 	        var url = snapshot.metadata.downloadURLs[0];
 	        
 
@@ -104,8 +102,10 @@ angular.module('slangoApp')
 });
 
 vm.userSlangsAdded ='';
+
   if (navigator.onLine) {
     firebaseService.getSlangs().on('value', function(response) {
+      $scope.loaded = true;
       vm.userSlangsAdded = response.val();
       var result = [];
       for(var key in vm.userSlangsAdded){
@@ -113,6 +113,7 @@ vm.userSlangsAdded ='';
               result.push(vm.userSlangsAdded[key]);
       }
        vm.userSlangsAdded = result;
+       
     });
   } else {
     indexDBService.getVobj().then(function(vObjv){
@@ -122,7 +123,7 @@ vm.userSlangsAdded ='';
         return item.slangID === vm.uid;
       });
       vm.userSlangsAdded = filtered;
-  
+      $scope.loaded = true;
     });
   }
 

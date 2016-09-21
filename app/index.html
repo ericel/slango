@@ -2,6 +2,7 @@
 <html ng-app="slangoApp">
   <head>
     <meta charset="utf-8">
+   <meta name="fragment" content="!">
    <title>Slango | {{ seo.pageTitle }}</title>
     <meta name="description" content="{{ seo.metaDescription }}">
     <meta name="viewport" content="width=device-width">
@@ -45,11 +46,14 @@
 
     <!-- Add your site or application content here -->
     <!-- Add your site or application content here -->
+
+   
     <div ng-include="'shared/header/header.html'" ng-controller="HeaderCtrl"></div>
     
       <div ui-view></div>
     <div ng-include="'shared/footer/footer.html'" ng-controller="FooterCtrl"></div>
-
+  
+   
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <!--<script>

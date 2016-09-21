@@ -10,7 +10,6 @@
 angular.module('slangoApp')
   .controller('HeaderCtrl', function ($scope, $state, $location, $timeout, $mdSidenav, $log, authService, $interval) {
      var vm = this;
-
     //$scope.error = "Enter a better search term";
     $scope.searchSlango = function(searchString){
        if (searchString == undefined) {
@@ -25,7 +24,7 @@ angular.module('slangoApp')
     }
 
     vm.auth = authService.isLoggedIn();
-  
+
     vm.auth.$onAuthStateChanged(function(user) {
       $scope.slangoUser = user;
      $scope.testImage = function(url, timeoutT) {
@@ -132,5 +131,6 @@ angular.module('slangoApp')
     /*$.getJSON("https://slango-a0034.firebaseio.com/user-videos.json", function(json) {
     console.log(json); // this will show the info it in firebug console
     });*/
+
   });
 

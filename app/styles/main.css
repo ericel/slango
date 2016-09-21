@@ -399,6 +399,14 @@ div.book {
     margin: 0px auto;
     background-size: cover;
 }
+div.book h2 {
+  bottom: -75px;
+  color: #ccd;
+  font-weight: bold;
+  position: relative;
+  width: 100% !important;
+  font-size: 1em;
+}
 .book {
     background-position: -100px;
 }
@@ -898,3 +906,10 @@ img.user-avatar-user{
   font-size: 0.4em;
 }
 /* END SEARCH TERM */
+/* Preloading */
+
+.preloader {
+    padding: 400px;
+    background: url('/images/design/preloader.gif') no-repeat 50% 50% transparent;
+}
+/* END Preloading */

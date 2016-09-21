@@ -14,6 +14,8 @@ angular.module('slangoApp')
         pageTitle : 'World of slangs',
         pageDescripton: 'World Slangs Database'
     };
+
+    $scope.loaded = false;
   if (navigator.onLine) {
     var addToSlangs = [];
     firebaseService.getSlangs().on('value', function(response) {
@@ -26,12 +28,12 @@ angular.module('slangoApp')
         }
       }
       vm.slangs = addToSlangs;
-      
+      $scope.loaded = true;
      });
   } else {
     indexDBService.getVobj().then(function(vObj){
       vm.slangs = vObj;
-      
+      $scope.loaded = true;
     });
   }
    $scope.criteriaMatch = function( letter) {
