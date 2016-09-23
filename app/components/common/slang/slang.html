@@ -3,7 +3,7 @@
 <section class="col-home-bg color">
   <div class=" container">
   <div class="row col-re">
-		<h1 class="capitalize">{{slang.title}}</h1>
+		<h1 class="capitalize" autofocus aria-label="{{slang.title}}" tabindex="0">{{slang.title}}</h1>
 	</div>
  </div>
  </section>
@@ -11,6 +11,7 @@
  <div class="container">
  
     <div  class="col-re">
+    <section tabindex="0">
 	   <h2>What is the meaning of <span class="sl-mark">{{slang.title}}</span>?</h2>
 		<p>{{slang.defined}}</p>
 	    <h2>How is <span class="sl-mark">{{slang.title}}</span> used?</h2>
@@ -20,18 +21,18 @@
 	    <small>{{slang.date_added | date:'dd-MMM-yy HH:mm'}}</small>
 	    </div>
       <div class="v-box">
-        <md-button class="md-fab md-primary" aria-label="Vote Up" ng-click="upVote()">
+        <md-button class="md-fab md-primary" aria-label="Vote Slang definition Up" ng-click="upVote()">
             <ng-md-icon icon="thumb_up" style="fill:#ffffff"></ng-md-icon> 
         </md-button>
         <span>{{slang.likesSlang}}</span>
-        <md-button class="md-fab md-warn" aria-label="Vote Down" ng-click="upDown()">
+        <md-button class="md-fab md-warn" aria-label="Vote Slang definition Down" ng-click="upDown()">
             <ng-md-icon icon="thumb_down" style="fill:#000000" ></ng-md-icon> 
         </md-button>
          <span>{{slang.dislikesSlang}}</span>
          <small class="error">{{alert}}</small>
          <small class="success">{{success}}</small>
       </div>
-
+     </section>
      <div class="comment">
       <div ng-hide="slangoUser">
          To add a comment <a ui-sref="login">Log in</a>
