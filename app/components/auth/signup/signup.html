@@ -9,7 +9,7 @@
 		   <md-card>
 			   <md-input-container>
 		       <label for="username">Username:</label>
-		        <input  type="text"  ng-model="username" id="username" name="username" md-autofocus required=""  ng-trim="false" ng-change="username = username.split(' ').join('')">
+		        <input  type="text"  ng-model="username" id="username" name="username" autofocus required=""  ng-trim="false" ng-change="username = username.split(' ').join('')">
 		         <div ng-show="signupform.$submitted || signupform.username.$touched">
 		          <span ng-show="signupform.username.$error.required">Enter Username.</span>
 		        </div>

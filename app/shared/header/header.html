@@ -39,18 +39,18 @@
            <md-button type="submit" class="btn md-raised md-primary" ng-click="searchSlango(searchstring)">Search</md-button>
           </form>
           </div>
-            <ul class="user-si-a nav navbar-nav navbar-right">
+            <ul tabindex="-1" class="user-si-a nav navbar-nav navbar-right">
 
-            <li ng-show="slangoUser" class="upload-btn"><a class="btn btn-default" ui-sref="add">Add <ng-md-icon icon="add" style="fill: #0097a7"></ng-md-icon> </a></li>
+            <li  ng-show="slangoUser" class="upload-btn"><a aria-label="Add A Language Slang" class="btn btn-default" ui-sref="add">Add <ng-md-icon icon="add" style="fill: #0097a7"></ng-md-icon> </a></li>
 
             <li class="fix-top" ng-hide="slangoUser"><a ui-sref="login">Log in</a></li>
             <li class="fix-top" ng-hide="slangoUser"><a ui-sref="signup">Sign up</a></li>
             
             <li class="user-si" ng-show="slangoUser">
-            <a ui-sref="user({uid: slangoUser.uid, user: slangoUser.displayName})">
+            <a aria-label="navigate to {{slangoUser.displayName}} profile" tabindex="0" ui-sref="user({uid: slangoUser.uid, user: slangoUser.displayName})">
             <img  class="user-avatar md-raised md-primary" ng-src="{{userUrlImg}}"" alt="{{slangoUser.displayName}}">
             </a>
-            <ng-md-icon ng-click="toggleRight()"
+            <ng-md-icon aria-label="Logged in User Side Navigation" tabindex="0" ng-click="toggleRight()"
             ng-hide="isOpenRight()"  icon="dehaze" style="fill:#A6A6A6" size="40"></ng-md-icon> 
           </li>
           </ul>
@@ -66,7 +66,7 @@
 
       <md-toolbar class="md-theme-light">
 
-        <h1 class="md-toolbar-tools  pull-right" >   <ng-md-icon  class="icon-closes" ng-click="close()" icon="backspace"></ng-md-icon><span flex> </span> <ng-md-icon icon="perm_identity"></ng-md-icon> Account </h1> 
+        <h1 class="md-toolbar-tools  pull-right" >   <ng-md-icon aria-label="Close Side Navigation" tabindex="0"  class="icon-closes" ng-click="close()" icon="backspace"></ng-md-icon><span flex> </span> <ng-md-icon icon="perm_identity"></ng-md-icon> Account </h1> 
       </md-toolbar>
       <md-content layout-padding>
       <div ng-show="slangoUser">

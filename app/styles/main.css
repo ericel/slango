@@ -11,7 +11,10 @@
 body {
   width:100%;
   margin:0 auto;
-  background: url('/images/design/bg_2.png');
+ 
+}
+body, html {
+   background: url('/images/design/bg_2.png');
 }
 html{
   height: auto !important;

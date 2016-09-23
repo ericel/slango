@@ -3,7 +3,7 @@
 <section class="col-home-bg color">
   <div class=" container">
   <div class="row col-re">
-		<h1 class="capitalize" autofocus aria-label="{{slang.title}}" tabindex="0">{{slang.title}}</h1>
+		<h1 class="capitalize" id="slang_id"  aria-label="{{slang.title}}" tabindex="0">{{slang.title}}</h1>
 	</div>
  </div>
  </section>
@@ -24,11 +24,11 @@
         <md-button class="md-fab md-primary" aria-label="Vote Slang definition Up" ng-click="upVote()">
             <ng-md-icon icon="thumb_up" style="fill:#ffffff"></ng-md-icon> 
         </md-button>
-        <span>{{slang.likesSlang}}</span>
+        <span aria-label="Total votes up {{slang.likesSlang}}" tabindex="0">{{slang.likesSlang}}</span>
         <md-button class="md-fab md-warn" aria-label="Vote Slang definition Down" ng-click="upDown()">
             <ng-md-icon icon="thumb_down" style="fill:#000000" ></ng-md-icon> 
         </md-button>
-         <span>{{slang.dislikesSlang}}</span>
+         <span aria-label="Total votes down {{slang.dislikesSlang}}" tabindex="0"> {{slang.dislikesSlang}}</span>
          <small class="error">{{alert}}</small>
          <small class="success">{{success}}</small>
       </div>
@@ -43,7 +43,7 @@
           <md-card>
 			   <md-input-container>
 		       <label for="comment">Comment:</label>
-		        <textarea ng-model="comment" id="comment" name="comment" md-autofocus required=""  ng-trim="false"></textarea>
+		        <textarea ng-model="comment" id="comment" name="comment" required=""  ng-trim="false"></textarea>
 		         <div ng-show="form.$submitted || form.comment.$touched">
 		          <span ng-show="form.comment.$error.required">Enter Your Comment.</span>
 		        </div>
@@ -61,9 +61,9 @@
     </div>
  </div>
  <div class="container col-re">
- <h2>User Comments:</h2>
+ <h2 aria-label="User comments" tabindex="0">User Comments:</h2>
  <ul class="col-comments">
-    <li ng-repeat="comment in slang.comments | orderBy: '-time_date'">
+    <li tabindex="0" ng-repeat="comment in slang.comments | orderBy: '-time_date'">
         <div class="capitalize">
           Added By <a ui-sref="user({uid: comment.user_id, user: comment.username})">{{comment.username}}</a>
          </div>

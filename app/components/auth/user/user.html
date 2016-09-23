@@ -7,14 +7,14 @@
 	<section class="col-user-bg color">
 	   <div class="container">
 	      <div class="text-center">
-	        <h1 class="capitalize">{{slang.user}}</h1>
-	        <h3>{{slang.country}}</h3>
-	        <small>Since: {{slang.signupdate | date:'dd-MMM-yy'}}</small>
+	        <h1 class="capitalize" aria-label="{{slang.user}}'s Profile" tabindex="0">{{slang.user}}</h1>
+	        <h3 aria-label="{{slang.user}} is from {{slang.country}}" tabindex="0">{{slang.country}}</h3>
+	        <small aria-label="Sign up date {{slang.signupdate | date:'dd-MMM-yy'}}" tabindex="0">Since: {{slang.signupdate | date:'dd-MMM-yy'}}</small>
 	        <div class="user-pic">
-               <img  class="user-avatar-user  md-raised md-primary" ng-src="{{slang.userUrlImg}}" ng-model="userUrlImg" alt="{{slang.user}}"><ng-md-icon ng-show="slangoUserIS" ng-click="showme=true" icon="local_see" style="fill: #ccd" size="60"></ng-md-icon>
+               <img aria-label="{{slang.user}} Profile Picture" tabindex="0"  class="user-avatar-user  md-raised md-primary" ng-src="{{slang.userUrlImg}}" ng-model="userUrlImg" alt="{{slang.user}}"><ng-md-icon aria-label="Change your profile picture" tabindex="0" ng-show="slangoUserIS" ng-click="showme=true" icon="local_see" style="fill: #ccd" size="60"></ng-md-icon>
 	        </div>
 
-	       <md-button class="md-raised md-warn pull-right" ng-show="showme"  ng-click="showme=false">X</md-button>
+	       <md-button aria-label="Close Change your profile picture" tabindex="0" class="md-raised md-warn pull-right" ng-show="showme"  ng-click="showme=false">X</md-button>
 
         <!-- Container for the demo -->
         <md-card class="mak-pic" ng-show="showme">
@@ -44,7 +44,7 @@
 	 <div class="clearfix"></div>
 </div>
 <div class="container">
-  <md-subheader class="md-no-sticky">User Added Slangs ({{slang.userSlangsAdded.length}})</md-subheader>
+  <md-subheader class="md-no-sticky" aria-label="{{slang.user}} added {{slang.userSlangsAdded.length}} slangs" tabindex="0" >User Added Slangs ({{slang.userSlangsAdded.length}})</md-subheader>
    <div class="row">
      <div class="col-md-3" ng-repeat="slang in slang.userSlangsAdded | orderBy: 'time_date'">
      	  <h1 class="capitalize home-title"><a ui-sref="slang({sid: slang.slangID, title: (slang.slang | removeSpaces)})">{{slang.slang}}</a></h1>
